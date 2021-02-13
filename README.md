@@ -1,4 +1,4 @@
-# UM EECS441 ARmaps
+# UM EECS441 W21 ARmaps
 
 | Gradesheet | Team Info | Demo  |  Wiki |  Trello  |
 |:----------:|:---------:|:-----:|:-----:|:--------:|
