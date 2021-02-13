@@ -11,4 +11,4 @@
 [team_contract]: /assets/armaps_contract.pdf
 [demo_page]: https://youtube.com/
 [wiki_page]: https://github.com/mohtamba/ARmaps/wiki
-[process_page]: https://trello.com/
+[process_page]: https://trello.com/b/hibOg284/general
