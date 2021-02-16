@@ -1,0 +1,50 @@
+version: "3.7"
+
+services:
+  armaps-api:
+    image: armaps:latest
+    restart: unless-stopped
+    networks:
+      - armaps_bridge
+    ports:
+      - "5000:5000"
+
+  armaps-db:
+    image: postgres:13.2
+    restart: unless-stopped
+    networks:
+      - armaps_bridge
+    environment:
+      POSTGRES_DB: armaps
+      POSTGRES_USER: armaps_user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    expose:
+      # Opens port 5432 on the container
+      - "5432"
+      # Where our data will be persisted
+    volumes:
+      - armapsdb:/var/lib/postgres
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    networks:
+      - armaps_bridge
+    environment:
+      ADMINER_DEFAULT_SERVER: armaps-db
+      ADMINER_DESIGN: nette
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+
+networks:
+  armaps_bridge:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: armaps_bridge
+
+volumes:
+  armapsdb:
