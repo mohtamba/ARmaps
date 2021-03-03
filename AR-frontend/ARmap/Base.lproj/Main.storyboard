@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ug5-UO-LgT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Welcome-->
+        <scene sceneID="8co-Xx-cAo">
+            <objects>
+                <tableViewController title="Welcome" id="8Zq-dt-BxF" customClass="Welcome" customModule="ARmap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jqf-4s-W0b">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VenueTableCell" rowHeight="134" id="KC9-rP-eZo" userLabel="VenueTableCell" customClass="VenueTableCell" customModule="ARmap" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="134"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KC9-rP-eZo" id="pob-sz-rI4">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="134"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Venue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCD-04-PiL" userLabel="name_venue">
+                                            <rect key="frame" x="27" y="21" width="367" height="63"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="venue_name" label="name_venue"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMq-Wc-cxq" userLabel="Distance ">
+                                            <rect key="frame" x="27" y="102" width="367" height="21"/>
+                                            <accessibility key="accessibilityConfiguration" label="Distance "/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3di-jF-lZL" userLabel="Go Button">
+                                            <rect key="frame" x="346" y="36" width="36" height="33"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="GoButton"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="36" id="V4G-fU-s7A"/>
+                                            </constraints>
+                                            <state key="normal" image="location.fill" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="GCD-04-PiL" firstAttribute="leading" secondItem="pob-sz-rI4" secondAttribute="leadingMargin" constant="7" id="5p0-Da-DkO"/>
+                                        <constraint firstItem="HMq-Wc-cxq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pob-sz-rI4" secondAttribute="leading" constant="20" symbolic="YES" id="Ge9-4z-VPO"/>
+                                        <constraint firstItem="HMq-Wc-cxq" firstAttribute="centerX" secondItem="GCD-04-PiL" secondAttribute="centerX" id="JIF-sz-Bd4"/>
+                                        <constraint firstItem="HMq-Wc-cxq" firstAttribute="top" secondItem="3di-jF-lZL" secondAttribute="bottom" constant="34" id="NDv-vN-n5U"/>
+                                        <constraint firstItem="GCD-04-PiL" firstAttribute="top" secondItem="pob-sz-rI4" secondAttribute="topMargin" constant="10" id="bHa-al-Ob7"/>
+                                        <constraint firstItem="HMq-Wc-cxq" firstAttribute="trailing" secondItem="pob-sz-rI4" secondAttribute="trailingMargin" id="c1v-4b-2D9"/>
+                                        <constraint firstItem="HMq-Wc-cxq" firstAttribute="top" secondItem="GCD-04-PiL" secondAttribute="bottom" constant="18" id="dvV-cH-QPw"/>
+                                        <constraint firstItem="3di-jF-lZL" firstAttribute="top" secondItem="pob-sz-rI4" secondAttribute="topMargin" constant="24" id="jqz-2W-kbH"/>
+                                        <constraint firstItem="GCD-04-PiL" firstAttribute="top" secondItem="pob-sz-rI4" secondAttribute="top" constant="21" id="oEf-a2-p7n"/>
+                                        <constraint firstItem="HMq-Wc-cxq" firstAttribute="bottom" secondItem="pob-sz-rI4" secondAttribute="bottomMargin" id="ooe-qL-RjM"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="3di-jF-lZL" secondAttribute="trailing" constant="13" id="uzN-km-jQ4"/>
+                                        <constraint firstItem="HMq-Wc-cxq" firstAttribute="trailing" secondItem="GCD-04-PiL" secondAttribute="trailing" id="xKs-BC-RFR"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GCD-04-PiL" secondAttribute="trailing" constant="20" symbolic="YES" id="xL7-bs-Pl1"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="VenueTableCell"/>
+                                <connections>
+                                    <outlet property="GoButton" destination="3di-jF-lZL" id="hoM-uH-emC"/>
+                                    <outlet property="distance" destination="HMq-Wc-cxq" id="Xef-kK-a0G"/>
+                                    <outlet property="name_venue" destination="GCD-04-PiL" id="7Af-RO-Z3g"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8Zq-dt-BxF" id="q7j-LS-xLr"/>
+                            <outlet property="delegate" destination="8Zq-dt-BxF" id="Uha-4h-o88"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select nearby venues to get started" id="aqw-LR-21Q"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3sn-7P-rDR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="889.85507246376824" y="97.767857142857139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="S2l-49-VKs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ug5-UO-LgT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tDc-5R-At4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8Zq-dt-BxF" kind="relationship" relationship="rootViewController" id="CeT-CC-u0e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bZc-yS-L5i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140.57971014492756" y="98.4375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="location.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

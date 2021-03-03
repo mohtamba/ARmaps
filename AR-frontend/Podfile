@@ -1,0 +1,11 @@
+platform :ios, '13.6'
+
+target 'ARmap' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for swiftChatter
+  pod 'SDWebImage', '~> 5.0'
+  pod 'Alamofire', '~> 5.2'
+
+end
