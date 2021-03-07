@@ -10,7 +10,10 @@ app.config.from_object('armaps.config')
 import armaps.api
 import armaps.model
 
-# Testing
-@app.route('/')
-def hello_world():
-    return "Hello World"
+
+# Serve image files to the frontend
+@app.route('/media/<path:filename>', methods=["GET"])
+def get_image(filename):
+    """Return image requested."""
+    return flask.send_from_directory(str(app.config['MEDIA_FOLDER']), 
+                                     filename, as_attachment=True)

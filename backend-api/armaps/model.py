@@ -1,4 +1,5 @@
 """Armaps model (database) API."""
+import os
 import flask
 import psycopg2
 import psycopg2.extras
@@ -9,11 +10,11 @@ def get_db():
     """Open a new database connection."""
     if "db_con" not in flask.g:
         flask.g.db_con = psycopg2.connect(
-            host=insta485.app.config['POSTGRESQL_DATABASE_HOST'],
-            port=insta485.app.config['POSTGRESQL_DATABASE_PORT'],
-            user=insta485.app.config['POSTGRESQL_DATABASE_USER'],
-            password=insta485.app.config['POSTGRESQL_DATABASE_PASSWORD'],
-            database=insta485.app.config['POSTGRESQL_DATABASE_DB'],
+            host=os.getenv('POSTGRES_HOST'),
+            port=armaps.app.config['POSTGRESQL_DATABASE_PORT'],
+            user=armaps.app.config['POSTGRESQL_DATABASE_USER'],
+            password=armaps.app.config['POSTGRESQL_DATABASE_PASSWORD'],
+            database=armaps.app.config['POSTGRESQL_DATABASE_DB'],
         )
         flask.g.db_cur = flask.g.db_con.cursor(
             cursor_factory=psycopg2.extras.RealDictCursor
