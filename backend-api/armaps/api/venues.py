@@ -17,10 +17,6 @@ def get_venues():
     cur.execute("SELECT * FROM venues")
     venues = cur.fetchall()
 
-    # Remove venue_id from each venue dict
-    for venue in venues:
-        venue.pop("venue_id")
-
     # Sort the venues by name, alphabetically
     venues = sorted(venues, key=lambda i: i["name"])
 
