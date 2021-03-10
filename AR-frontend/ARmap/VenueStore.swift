@@ -4,11 +4,11 @@
             cuz we are not storing any data so far. 
  */
 import Foundation
-struct ChattStore {
-    private let serverUrl = "https://TODO/"
+struct VenueStore {
+    private let serverUrl = "https://YOUR_SERVER/"
     func getVenues(refresh: @escaping ([Venue]) -> (),
                        completion: @escaping () -> ()) {
-            guard let apiUrl = URL(string: serverUrl+"getvenues/") else {
+            guard let apiUrl = URL(string: serverUrl+"api/venues/?lat=42.29&lon=-83.72") else {
                 print("getVenues: Bad URL")
                 return
             }
@@ -23,20 +23,69 @@ struct ChattStore {
                     return
                 }
                 if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                    print("getChatts: HTTP STATUS: \(httpStatus.statusCode)")
+                    print("getVenues: HTTP STATUS: \(httpStatus.statusCode)")
                     return
                 }
-                
+                //let jsonObj = try? JSONSerialization.jsonObject(with: data, options: [])
                 guard let jsonObj = try? JSONSerialization.jsonObject(with: data) as? [String:Any] else {
-                    print("getChatts: failed JSON deserialization")
+                    print("getVenues: failed JSON deserialization")
                     return
                 }
                 var venues = [Venue]()
-                let venuesReceived = jsonObj["chatts"] as? [[String?]] ?? []  //TODO: depend on what venues' names are in the tables
+                //let venuesReceived = jsonObj["data"] as ? [String: Any]
+                let venuesReceived = jsonObj["data"] as? [[String:Any]] ?? []  //TODO: depend on what venues' names are in the tables
                 for venueEntry in venuesReceived {
                     if (venueEntry.count == Venue.nFields) {
-                        venues += [Venue(venue_name: venueEntry[0],
-                                         distance: venueEntry[1])]
+                        print("to check what's in the venueentry")
+                        //TODO: pull destinations into the array
+                        //print(venueEntry[0])
+                        //venues += Venue(json:venueEntry)!
+//                            [Venue(venue_name: venueEntry[0],
+//                                             description: venueEntry[1],
+//                                             imageUrl: venueEntry[2],
+//                                             lat: venueEntry[3],
+//                                             lon:venueEntry[4]
+//                                             )]
+                    } else {
+                        print("getChatts: Received unexpected number of fields: \(venueEntry.count) instead of \(Venue.nFields).")
+                    }
+                }
+                refresh(venues)
+            }
+            task.resume()
+        }
+    func get_destination_by_Venues(refresh: @escaping ([Venue]) -> (),
+                       completion: @escaping () -> ()) {
+            guard let apiUrl = URL(string: serverUrl+"api/venues/152/destinations?lat=42.29&lon=-83.72") else {
+                print("getVenues: Bad URL")
+                return
+            }
+            
+            var request = URLRequest(url: apiUrl)
+            request.httpMethod = "GET"
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                defer { completion() }
+                guard let data = data, error == nil else {
+                    print("getChatts: NETWORKING ERROR")
+                    return
+                }
+                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                    print("getVenues: HTTP STATUS: \(httpStatus.statusCode)")
+                    return
+                }
+                //let jsonObj = try? JSONSerialization.jsonObject(with: data, options: [])
+                guard let jsonObj = try? JSONSerialization.jsonObject(with: data) as? [String:Any] else {
+                    print("getVenues: failed JSON deserialization")
+                    return
+                }
+                var venues = [Venue]()
+                //let venuesReceived = jsonObj["data"] as ? [String: Any]
+                let venuesReceived = jsonObj["data"] as? [[String:Any]] ?? []  //TODO: depend on what venues' names are in the tables
+                for venueEntry in venuesReceived {
+                    if (venueEntry.count == Venue.nFields) {
+                        print("to check what's in the venueentry")
+                            //TODO: pull destinations into the array
                     } else {
                         print("getChatts: Received unexpected number of fields: \(venueEntry.count) instead of \(Venue.nFields).")
                     }
