@@ -1,14 +1,6 @@
 version: "3.7"
 
 services:
-  armaps-api:
-    image: armaps:latest
-    restart: unless-stopped
-    networks:
-      - armaps_bridge
-    ports:
-      - "5000:5000"
-
   armaps-db:
     image: postgres:13.2
     restart: unless-stopped
@@ -25,7 +17,18 @@ services:
       - "5432"
       # Where our data will be persisted
     volumes:
+      - ./sql/:/docker-entrypoint-initdb.d/
       - armapsdb:/var/lib/postgres
+
+  armaps-api:
+    image: armaps:latest
+    restart: unless-stopped
+    networks:
+      - armaps_bridge
+    environment:
+      POSTGRES_HOST: armaps-db
+    ports:
+      - "5000:5000"
 
   adminer:
     image: adminer
