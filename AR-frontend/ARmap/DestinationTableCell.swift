@@ -1,10 +1,12 @@
+
+
 import UIKit
 
-class VenueTableCell: UITableViewCell {
+class DestinationTableCell: UITableViewCell {
     
-    @IBOutlet weak var name_venue: UILabel!
-    @IBOutlet weak var distance: UILabel!
+    @IBOutlet weak var goButton: UIButton!
     
+    @IBOutlet weak var destination: UILabel!
     //TODO: what happens after tappin the go button
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -15,4 +17,3 @@ class VenueTableCell: UITableViewCell {
         // Configure the view for the selected state
     }
 }
-
