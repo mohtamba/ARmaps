@@ -17,12 +17,12 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     var spots_example = ["Hogwarts", "Olivanders", "Diagon Alley", "Platform 3/4", "Hogwarts Express","Azkeban"]
     var temp1 = Venue(), temp2 = Venue(), temp3 = Venue(), temp4 = Venue(), temp5 = Venue(), temp6 = Venue()
     func initialize_things(){
-        temp1.distance = miles_example[0]; temp1.venue_name = spots_example[0]
-        temp2.distance = miles_example[1]; temp2.venue_name = spots_example[1]
-        temp3.distance = miles_example[2]; temp3.venue_name = spots_example[2]
-        temp4.distance = miles_example[3]; temp4.venue_name = spots_example[3]
-        temp5.distance = miles_example[4]; temp5.venue_name = spots_example[4]
-        temp6.distance = miles_example[5]; temp6.venue_name = spots_example[5]
+        //temp1.distance = miles_example[0]; temp1.venue_name = spots_example[0]
+        //temp2.distance = miles_example[1]; temp2.venue_name = spots_example[1]
+        //temp3.distance = miles_example[2]; temp3.venue_name = spots_example[2]
+        //temp4.distance = miles_example[3]; temp4.venue_name = spots_example[3]
+        //temp5.distance = miles_example[4]; temp5.venue_name = spots_example[4]
+        //temp6.distance = miles_example[5]; temp6.venue_name = spots_example[5]
         try1.append(temp1); try1.append(temp2); try1.append(temp3); try1.append(temp4); try1.append(temp5); try1.append(temp6)
         print("after initialization")
         print(try1)

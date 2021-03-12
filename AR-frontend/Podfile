@@ -7,5 +7,6 @@ target 'ARmap' do
   # Pods for swiftChatter
   pod 'SDWebImage', '~> 5.0'
   pod 'Alamofire', '~> 5.2'
+  pod 'ARCL'
 
 end
