@@ -40,6 +40,8 @@ class Welcome: UITableViewController{
         refreshControl?.addTarget(self, action: #selector(Welcome.handleRefresh(_:)), for: UIControl.Event.valueChanged)
         
         refreshTimeline()
+        print("after refresh")
+        print(try1)
         for many in try1{
             let spot_key = String(many.venue_name!.prefix(1))
             if var venue_values = venue_dictionary[spot_key]{
@@ -58,12 +60,28 @@ class Welcome: UITableViewController{
     }
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshTimeline()
+        print("after handle")
+        print(try1)
     }
     private func refreshTimeline() {
         let store = VenueStore()
         store.getVenues(refresh: { chatts in
+            print(chatts)
             self.try1 = chatts
             DispatchQueue.main.async {
+                self.venue_dictionary.removeAll()
+                for many in self.try1{
+                    let spot_key = String(many.venue_name!.prefix(1))
+                    if var venue_values = self.venue_dictionary[spot_key]{
+                        venue_values.append(many)
+                        self.venue_dictionary[spot_key] = venue_values
+                    } else{
+                        self.venue_dictionary[spot_key] = [many]
+                    }
+                }
+                //sort the dictionary keys in alphabetical order
+                self.A_to_Z = [String] (self.venue_dictionary.keys)
+                self.A_to_Z = self.A_to_Z.sorted(by: { $0 < $1 })
                 self.tableView.estimatedRowHeight = 140
                 self.tableView.rowHeight = UITableView.automaticDimension
                 self.tableView.reloadData()
