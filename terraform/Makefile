@@ -32,3 +32,10 @@ apply: init
 		-var-file=./${AWS_REGION}/${ENV_NAME}/secrets.tfvars \
 		-var 'aws_profile=${AWS_PROFILE}' \
 		-var 'aws_region=${AWS_REGION}'
+
+destroy: init
+	terraform destroy \
+		-var-file=./${AWS_REGION}/${ENV_NAME}/terraform.tfvars \
+		-var-file=./${AWS_REGION}/${ENV_NAME}/secrets.tfvars \
+		-var 'aws_profile=${AWS_PROFILE}' \
+		-var 'aws_region=${AWS_REGION}'
