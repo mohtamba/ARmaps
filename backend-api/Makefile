@@ -19,3 +19,8 @@ local-start: docker-build
 		-f ./docker-compose.yml \
 		up \
 		--detach
+
+push-ecr: docker-build
+	docker login -u AWS -p $(shell aws ecr get-login-password --profile=armaps) https://886571573136.dkr.ecr.us-east-1.amazonaws.com
+	docker tag armaps:latest 886571573136.dkr.ecr.us-east-1.amazonaws.com/dev-armaps-ecr-repository:latest
+	docker push 886571573136.dkr.ecr.us-east-1.amazonaws.com/dev-armaps-ecr-repository:latest

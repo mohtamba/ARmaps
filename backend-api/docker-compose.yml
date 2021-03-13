@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   armaps-db:
-    image: postgres:13.2
+    image: postgres:13.1
     restart: unless-stopped
     networks:
       - armaps_bridge
@@ -28,7 +28,9 @@ services:
     environment:
       POSTGRES_HOST: armaps-db
     ports:
-      - "5000:5000"
+      - "8080:8080"
+    expose:
+      - "8080"
 
   adminer:
     image: adminer
@@ -39,9 +41,9 @@ services:
       ADMINER_DEFAULT_SERVER: armaps-db
       ADMINER_DESIGN: nette
     ports:
-      - "8080:8080"
+      - "5000:5000"
     expose:
-      - "8080"
+      - "5000"
 
 networks:
   armaps_bridge:
