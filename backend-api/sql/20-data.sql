@@ -5,7 +5,7 @@ VALUES
 INSERT INTO destinations(destination_id, venue_id, name, description, image_url, latitude, longitude)
 VALUES
     (DEFAULT, 1, 'Shivering Timbers', 'At a half-mile out and a half-mile back in just two minutes and 30 seconds, Shivering Timbers is a solid mile of pure adrenaline, excitement and fun!', '/media/shiveringtimbers.jpeg', 43.342225, -86.277054),
-    (DEFAULT, 1, 'Funnel of Fear', 'Take your best friends and family, add a bendy tunnel, a ginormous funnel, loads of screams and laughter, and what do you get? The Funnel of Fear at Michigan’s Adventure’s WildWater Adventure!', '/meida/funneloffear.jpeg', 43.345509, -86.279666),
+    (DEFAULT, 1, 'Funnel of Fear', 'Take your best friends and family, add a bendy tunnel, a ginormous funnel, loads of screams and laughter, and what do you get? The Funnel of Fear at Michigan’s Adventure’s WildWater Adventure!', '/media/funneloffear.jpeg', 43.345509, -86.279666),
     (DEFAULT, 1, 'Thunderhawk', 'Have you ever dreamed of soaring through the air like a majestic hawk? Our Thunderhawk roller coaster, the first suspended looping coaster in the state, comes mighty close to delivering the next best thing!', '/media/thunderhawk.jpeg', 43.345412, -86.277281),
     (DEFAULT, 2, 'Gate 10', 'Northeast entrance gate, also known as the student entrance.', '/media/gate10.jpeg', 42.267576, -83.747683),
     (DEFAULT, 2, 'Gate 4', 'Southwest entrance gate, also known as the main entrance.', '/media/gate4.jpeg', 42.264514, -83.749918),
