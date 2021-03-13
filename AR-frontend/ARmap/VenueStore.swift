@@ -5,10 +5,10 @@
  */
 import Foundation
 struct VenueStore {
-    private let serverUrl = "https://YOUR_SERVER/"
+    private let serverUrl = "https://api.armaps.net/"
     func getVenues(refresh: @escaping ([Venue]) -> (),
                        completion: @escaping () -> ()) {
-            guard let apiUrl = URL(string: serverUrl+"api/venues/?lat=42.29&lon=-83.72") else {
+            guard let apiUrl = URL(string: serverUrl+"api/venues/") else {
                 print("getVenues: Bad URL")
                 return
             }
@@ -34,18 +34,19 @@ struct VenueStore {
                 var venues = [Venue]()
                 //let venuesReceived = jsonObj["data"] as ? [String: Any]
                 let venuesReceived = jsonObj["data"] as? [[String:Any]] ?? []  //TODO: depend on what venues' names are in the tables
+                print(venuesReceived)
                 for venueEntry in venuesReceived {
                     if (venueEntry.count == Venue.nFields) {
                         print("to check what's in the venueentry")
                         //TODO: pull destinations into the array
-                        //print(venueEntry[0])
-                        //venues += Venue(json:venueEntry)!
-//                            [Venue(venue_name: venueEntry[0],
-//                                             description: venueEntry[1],
-//                                             imageUrl: venueEntry[2],
-//                                             lat: venueEntry[3],
-//                                             lon:venueEntry[4]
-//                                             )]
+                        print(venueEntry["description"] ?? "")
+                        venues += [Venue(venue_name: (venueEntry["name"] as! String),
+                                         description: (venueEntry["description"] as! String),
+                                         imageUrl: (venueEntry["image_url"] as! String),
+                                         lat: (venueEntry["latitude"] as! NSNumber).floatValue,
+                                         lon:(venueEntry["longitude"] as! NSNumber).floatValue,
+                                         id:(venueEntry["venue_id"] as! Int)
+                                             )]
                     } else {
                         print("getChatts: Received unexpected number of fields: \(venueEntry.count) instead of \(Venue.nFields).")
                     }
