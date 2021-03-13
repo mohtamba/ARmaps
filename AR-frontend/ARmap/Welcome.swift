@@ -9,9 +9,9 @@ import Foundation
 
 class Welcome: UITableViewController{
     //to create a dictionary of arrays
-    var venue_dictionary = [String: [Venue]]()
-    var selectedVenue = Venue()
-    var try1 = [Venue]()
+    var venue_dictionary = [String: [Location]]()
+    var selectedVenue = Location()
+    var try1 = [Location]()
     var A_to_Z = [String]()
     //add dumb venues--> to be deleted afterwards
 //    var miles_example = ["0.3 mile", "0.5 miles", "0.7 miles", "0.3 miles", "0.7 miles","90 miles"]
@@ -43,7 +43,7 @@ class Welcome: UITableViewController{
         print("after refresh")
         print(try1)
         for many in try1{
-            let spot_key = String(many.venue_name!.prefix(1))
+            let spot_key = String(many.name!.prefix(1))
             if var venue_values = venue_dictionary[spot_key]{
                 venue_values.append(many)
                 venue_dictionary[spot_key] = venue_values
@@ -63,15 +63,16 @@ class Welcome: UITableViewController{
         print("after handle")
         print(try1)
     }
+    
     private func refreshTimeline() {
-        let store = VenueStore()
-        store.getVenues(refresh: { chatts in
-            print(chatts)
-            self.try1 = chatts
+        let store = LocationStore()
+        store.getVenues(refresh: { venues in
+            print(venues)
+            self.try1 = venues
             DispatchQueue.main.async {
                 self.venue_dictionary.removeAll()
                 for many in self.try1{
-                    let spot_key = String(many.venue_name!.prefix(1))
+                    let spot_key = String(many.name!.prefix(1))
                     if var venue_values = self.venue_dictionary[spot_key]{
                         venue_values.append(many)
                         self.venue_dictionary[spot_key] = venue_values
@@ -124,7 +125,7 @@ class Welcome: UITableViewController{
         //let temp_venues = try1[indexPath.row]
         print("Problematic!!!")
         let temp_venues = vee![indexPath.row]
-        cell.name_venue.text = temp_venues.venue_name
+        cell.name_venue.text = temp_venues.name
         cell.name_venue.sizeToFit()
         cell.distance.text = temp_venues.description
         cell.distance.sizeToFit()
@@ -139,7 +140,7 @@ class Welcome: UITableViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? DestinationVC {
-            dest.venueName = selectedVenue.venue_name
+            dest.venueName = selectedVenue.name
             
         }
     }
