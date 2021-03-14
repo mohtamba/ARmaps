@@ -10,6 +10,7 @@
 		110302C325F58292005B9558 /* DestinationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110302C225F58292005B9558 /* DestinationVC.swift */; };
 		1142E1DB25F4873900B7AD8C /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1142E1DA25F4873900B7AD8C /* Destination.swift */; };
 		1189CC0825F64BB50094C810 /* DestinationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1189CC0725F64BB50094C810 /* DestinationTableCell.swift */; };
+		118F0DC625FDB70E00DDAB10 /* DescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118F0DC525FDB70E00DDAB10 /* DescriptionVC.swift */; };
 		1A23ED1F79CAAF41FC26F653 /* Pods_ARmap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1A0EE82D9E18674389336B /* Pods_ARmap.framework */; };
 		37CA791525EEDA800031184D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CA791425EEDA800031184D /* AppDelegate.swift */; };
 		37CA791725EEDA800031184D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CA791625EEDA800031184D /* SceneDelegate.swift */; };
@@ -23,13 +24,14 @@
 		37F584CD25EFFE3600315182 /* VenueTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F584CC25EFFE3600315182 /* VenueTableCell.swift */; };
 		9CEA091625FD718400229EE0 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA091525FD718400229EE0 /* ARView.swift */; };
 		9CEA097F25FD96A900229EE0 /* ARView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA097E25FD96A900229EE0 /* ARView2.swift */; };
-		9CEA099425FDA83200229EE0 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEA099325FDA83100229EE0 /* pin.png */; };
+		9E207C8C25FE91BE00C052AC /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E207C8B25FE91BE00C052AC /* pin.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		110302C225F58292005B9558 /* DestinationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationVC.swift; sourceTree = "<group>"; };
 		1142E1DA25F4873900B7AD8C /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		1189CC0725F64BB50094C810 /* DestinationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationTableCell.swift; sourceTree = "<group>"; };
+		118F0DC525FDB70E00DDAB10 /* DescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionVC.swift; sourceTree = "<group>"; };
 		2FD5D90A41EC8008F0F01762 /* Pods-ARmap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARmap.debug.xcconfig"; path = "Target Support Files/Pods-ARmap/Pods-ARmap.debug.xcconfig"; sourceTree = "<group>"; };
 		37CA791125EEDA800031184D /* ARmap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARmap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CA791425EEDA800031184D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +49,7 @@
 		90D7E1666CD82758A1135467 /* Pods-ARmap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARmap.release.xcconfig"; path = "Target Support Files/Pods-ARmap/Pods-ARmap.release.xcconfig"; sourceTree = "<group>"; };
 		9CEA091525FD718400229EE0 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		9CEA097E25FD96A900229EE0 /* ARView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView2.swift; sourceTree = "<group>"; };
-		9CEA099325FDA83100229EE0 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin.png; path = "../../../../../Downloads/ARKit-CoreLocation-develop/ARKit+CoreLocation/Assets.xcassets/pin.imageset/pin.png"; sourceTree = "<group>"; };
+		9E207C8B25FE91BE00C052AC /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				9CEA097E25FD96A900229EE0 /* ARView2.swift */,
 				37CA791625EEDA800031184D /* SceneDelegate.swift */,
 				37CA791A25EEDA800031184D /* Main.storyboard */,
+				118F0DC525FDB70E00DDAB10 /* DescriptionVC.swift */,
 				37CA791D25EEDA830031184D /* Assets.xcassets */,
 				37CA791F25EEDA830031184D /* LaunchScreen.storyboard */,
 				37CA792225EEDA830031184D /* Info.plist */,
@@ -106,7 +109,7 @@
 		37CA792D25EEE5490031184D /* images */ = {
 			isa = PBXGroup;
 			children = (
-				9CEA099325FDA83100229EE0 /* pin.png */,
+				9E207C8B25FE91BE00C052AC /* pin.png */,
 				37CA792A25EEE5400031184D /* screen-pic.jpg */,
 			);
 			path = images;
@@ -191,7 +194,7 @@
 				37CA792125EEDA830031184D /* LaunchScreen.storyboard in Resources */,
 				37CA791E25EEDA830031184D /* Assets.xcassets in Resources */,
 				37CA792B25EEE5400031184D /* screen-pic.jpg in Resources */,
-				9CEA099425FDA83200229EE0 /* pin.png in Resources */,
+				9E207C8C25FE91BE00C052AC /* pin.png in Resources */,
 				37CA791C25EEDA800031184D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +259,7 @@
 				37CA791725EEDA800031184D /* SceneDelegate.swift in Sources */,
 				9CEA097F25FD96A900229EE0 /* ARView2.swift in Sources */,
 				1142E1DB25F4873900B7AD8C /* Destination.swift in Sources */,
+				118F0DC625FDB70E00DDAB10 /* DescriptionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
