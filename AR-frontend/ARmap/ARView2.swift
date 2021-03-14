@@ -17,7 +17,7 @@ class ARView2: UIViewController {
     
     override func viewDidLoad() {
       super.viewDidLoad()
-      let coordinate = CLLocationCoordinate2D(latitude: 51.504571, longitude: -0.019717)
+        let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat!), longitude: CLLocationDegrees(lon!))
       let location = CLLocation(coordinate: coordinate, altitude: 300)
       let image = UIImage(named: "pin")!
 
