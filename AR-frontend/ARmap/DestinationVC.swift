@@ -136,7 +136,7 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if let dest = segue.destination as? ARView2 {
             dest.lat = try1[0].lat
             dest.lon = try1[0].lon
-            
+            dest.altitude = try1[0].altitude
         }
     }
     
