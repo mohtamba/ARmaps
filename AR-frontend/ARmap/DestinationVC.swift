@@ -119,5 +119,13 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return A_to_Z[section]
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? ARView2 {
+            dest.lat = try1[1].lat
+            dest.lon = try1[1].lon
+            
+        }
+    }
+    
 }
 
