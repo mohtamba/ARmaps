@@ -8,6 +8,7 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var venueTitle: UILabel!
     @IBOutlet weak var destinationList: UITableView!
     var venue: Location?
+    var selectedDestination = Location()
     let refreshControl = UIRefreshControl()
 
     //to create a dictionary of arrays
@@ -109,8 +110,11 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return 0;
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            // event handler when a cell is tapped
-            tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        let dest_key = A_to_Z[indexPath.section]
+        let vee = destination_dictionary[dest_key]
+        selectedDestination = vee![indexPath.row]
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        performSegue(withIdentifier: "showDescription", sender: self)
         }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
@@ -131,14 +135,10 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return A_to_Z[section]
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? ARView2 {
-            dest.lat = try1[0].lat
-            dest.lon = try1[0].lon
-            dest.altitude = try1[0].altitude
+        if let dest = segue.destination as? DescriptionVC {
+            dest.dest = selectedDestination
         }
     }
-    
 }
 
