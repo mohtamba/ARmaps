@@ -9,32 +9,17 @@ import Foundation
 
 class Welcome: UITableViewController{
     //to create a dictionary of arrays
-    var venue_dictionary = [String: [Venue]]()
-    var selectedVenue = Venue()
-    var try1 = [Venue]()
+    var venue_dictionary = [String: [Location]]()
+    var selectedVenue = Location()
+    var try1 = [Location]()
     var A_to_Z = [String]()
-    //add dumb venues--> to be deleted afterwards
-//    var miles_example = ["0.3 mile", "0.5 miles", "0.7 miles", "0.3 miles", "0.7 miles","90 miles"]
-//    var spots_example = ["Harry Potter", "Potter's mum", "Mum's Potter", "Simpsons", "Simple","NO"]
-//    var temp1 = Venue(), temp2 = Venue(), temp3 = Venue(), temp4 = Venue(), temp5 = Venue(), temp6 = Venue()
-    func initialize_things(){
-//        temp1.distance = miles_example[0]; temp1.venue_name = spots_example[0]
-//        temp2.distance = miles_example[1]; temp2.venue_name = spots_example[1]
-//        temp3.distance = miles_example[2]; temp3.venue_name = spots_example[2]
-//        temp4.distance = miles_example[3]; temp4.venue_name = spots_example[3]
-//        temp5.distance = miles_example[4]; temp5.venue_name = spots_example[4]
-//        temp6.distance = miles_example[5]; temp6.venue_name = spots_example[5]
-//        try1.append(temp1); try1.append(temp2); try1.append(temp3); try1.append(temp4); try1.append(temp5); try1.append(temp6)
-        print("after initialization")
-        //should be nothing, just for normal testing
-        print(try1)
-    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         //return 1
         return A_to_Z.count
     }
     override func viewDidLoad() {
-        initialize_things()
+        //initialize_things()
         super.viewDidLoad()
         //fill in the venue dictionary
         refreshControl?.addTarget(self, action: #selector(Welcome.handleRefresh(_:)), for: UIControl.Event.valueChanged)
@@ -43,7 +28,7 @@ class Welcome: UITableViewController{
         print("after refresh")
         print(try1)
         for many in try1{
-            let spot_key = String(many.venue_name!.prefix(1))
+            let spot_key = String(many.name!.prefix(1))
             if var venue_values = venue_dictionary[spot_key]{
                 venue_values.append(many)
                 venue_dictionary[spot_key] = venue_values
@@ -60,18 +45,18 @@ class Welcome: UITableViewController{
     }
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshTimeline()
-        print("after handle")
-        print(try1)
+        //print("after handle")
+        //print(try1)
     }
+    
     private func refreshTimeline() {
-        let store = VenueStore()
-        store.getVenues(refresh: { chatts in
-            print(chatts)
-            self.try1 = chatts
+        let store = LocationStore()
+        store.getVenues(refresh: { venues in
+            self.try1 = venues
             DispatchQueue.main.async {
                 self.venue_dictionary.removeAll()
                 for many in self.try1{
-                    let spot_key = String(many.venue_name!.prefix(1))
+                    let spot_key = String(many.name!.prefix(1))
                     if var venue_values = self.venue_dictionary[spot_key]{
                         venue_values.append(many)
                         self.venue_dictionary[spot_key] = venue_values
@@ -110,21 +95,14 @@ class Welcome: UITableViewController{
             performSegue(withIdentifier: "showDestinations", sender: self)
         }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "VenueTableCell", for: indexPath) as? VenueTableCell
-        print("dictionary")
-        print(venue_dictionary)
-        print("key values")
-        print(A_to_Z)
-        print(try1)
+
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VenueTableCell", for: indexPath) as? VenueTableCell else {
             fatalError("No reusable cell!")
         }
         let venue_key = A_to_Z[indexPath.section]
         let vee = venue_dictionary[venue_key]
-        //let temp_venues = try1[indexPath.row]
-        print("Problematic!!!")
         let temp_venues = vee![indexPath.row]
-        cell.name_venue.text = temp_venues.venue_name
+        cell.name_venue.text = temp_venues.name
         cell.name_venue.sizeToFit()
         cell.distance.text = temp_venues.description
         cell.distance.sizeToFit()
@@ -139,7 +117,7 @@ class Welcome: UITableViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? DestinationVC {
-            dest.venueName = selectedVenue.venue_name
+            dest.venueName = selectedVenue.name
             
         }
     }
