@@ -28,25 +28,21 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     override func viewDidLoad() {
         initialize_things()
-        /* add refresh control for reloading data */
-        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
-
-        if #available(iOS 10.0, *) {
-            refreshControl = refreshControl
-        } else {
-            backgroundView = refreshControl
-        }
-        
-        refreshControl?.addTarget(self, action: #selector(DestinationVC.handleRefresh(_:)), for: UIControl.Event.valueChanged)
-        
-        //refreshTimeline()
-        
         super.viewDidLoad()
+
+        /* add refresh control for reloading data */
+        //refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(DestinationVC.handleRefresh(_:)), for: UIControl.Event.valueChanged)
+
+        refreshTimeline()
+        
         self.destinationList.delegate = self
         self.destinationList.dataSource = self
         self.destinationList.reloadData()
         venueTitle.text = venueName
         venueTitle.sizeToFit()
+        print(try1)
+        print("after dest refresh")
         //fill in the venue dictionary
         //sort the dictionary keys in alphabetical order
         A_to_Z = [String] (destination_dictionary.keys)
@@ -80,14 +76,12 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 //sort the dictionary keys in alphabetical order
                 self.A_to_Z = [String] (self.destination_dictionary.keys)
                 self.A_to_Z = self.A_to_Z.sorted(by: { $0 < $1 })
-                self.tableView.estimatedRowHeight = 140
-                self.tableView.rowHeight = UITableView.automaticDimension
-                self.tableView.reloadData()
+                
             }
         }) {
             DispatchQueue.main.async {
                 // stop the refreshing animation upon completion:
-                refreshControl?.endRefreshing()
+                self.refreshControl.endRefreshing()
             }
         }
     }

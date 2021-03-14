@@ -37,9 +37,9 @@ struct LocationStore {
                 print(venuesReceived)
                 for venueEntry in venuesReceived {
                     if (venueEntry.count == Location.nFields) {
-                        print("to check what's in the venueentry")
+                        //print("to check what's in the venueentry")
                         //TODO: pull destinations into the array
-                        print(venueEntry["description"] ?? "")
+                        //print(venueEntry["description"] ?? "")
                         venues += [Location(name: (venueEntry["name"] as! String),
                                          description: (venueEntry["description"] as! String),
                                          imageUrl: (venueEntry["image_url"] as! String),
@@ -57,7 +57,7 @@ struct LocationStore {
         }
     func get_destination_by_Venues(refresh: @escaping ([Location]) -> (),
                        completion: @escaping () -> ()) {
-            guard let apiUrl = URL(string: serverUrl+"api/venues/1/destinations?lat=43.34208&lon=-86.27985") else {
+            guard let apiUrl = URL(string: serverUrl+"api/venues/1/destinations/") else {
                 print("getDestinations: Bad URL")
                 return
             }
@@ -83,12 +83,17 @@ struct LocationStore {
                 var destinations = [Location]()
                 //let venuesReceived = jsonObj["data"] as ? [String: Any]
                 let destinationsReceived = jsonObj["data"] as? [[String:Any]] ?? []  //TODO: depend on what venues' names are in the tables
-                for venueEntry in destinationsReceived {
-                    if (venueEntry.count == Location.nFields) {
-                        print("to check what's in the destentry")
-                            //TODO: pull destinations into the array
+                for destEntry in destinationsReceived {
+                    if (destEntry.count == Location.nFields) {
+                        destinations += [Location(name: (destEntry["name"] as! String),
+                                         description: (destEntry["description"] as! String),
+                                         imageUrl: (destEntry["image_url"] as! String),
+                                         lat: (destEntry["latitude"] as! NSNumber).floatValue,
+                                         lon:(destEntry["longitude"] as! NSNumber).floatValue,
+                                         id:(destEntry["venue_id"] as! Int)
+                                             )]
                     } else {
-                        print("getDestinations: Received unexpected number of fields: \(venueEntry.count) instead of \(Location.nFields).")
+                        print("getVenues: Received unexpected number of fields: \(destEntry.count) instead of \(Location.nFields).")
                     }
                 }
                 refresh(destinations)
