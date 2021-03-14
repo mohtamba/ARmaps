@@ -24,9 +24,10 @@ struct Location {
     @LocPropWrapper var imageUrl: String? = nil
     var lat: Float?
     var lon: Float?
+    var altitude: Float?
     var id: Int?
     //add geodata afterwards
-    static let nFields = 6
+    static let nFields = 7
 }
 /*Ideas from the apple instruction page
   To create an extension to the Venue model and add an initializer that takes

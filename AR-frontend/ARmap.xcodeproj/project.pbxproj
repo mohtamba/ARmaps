@@ -24,7 +24,7 @@
 		37F584CD25EFFE3600315182 /* VenueTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F584CC25EFFE3600315182 /* VenueTableCell.swift */; };
 		9CEA091625FD718400229EE0 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA091525FD718400229EE0 /* ARView.swift */; };
 		9CEA097F25FD96A900229EE0 /* ARView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA097E25FD96A900229EE0 /* ARView2.swift */; };
-		9E207C8C25FE91BE00C052AC /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E207C8B25FE91BE00C052AC /* pin.png */; };
+		9E5EAC1D25FE2FFE00DDA410 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E5EAC1C25FE2FFE00DDA410 /* pin.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +49,7 @@
 		90D7E1666CD82758A1135467 /* Pods-ARmap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARmap.release.xcconfig"; path = "Target Support Files/Pods-ARmap/Pods-ARmap.release.xcconfig"; sourceTree = "<group>"; };
 		9CEA091525FD718400229EE0 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		9CEA097E25FD96A900229EE0 /* ARView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView2.swift; sourceTree = "<group>"; };
-		9E207C8B25FE91BE00C052AC /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
+		9E5EAC1C25FE2FFE00DDA410 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +109,7 @@
 		37CA792D25EEE5490031184D /* images */ = {
 			isa = PBXGroup;
 			children = (
-				9E207C8B25FE91BE00C052AC /* pin.png */,
+				9E5EAC1C25FE2FFE00DDA410 /* pin.png */,
 				37CA792A25EEE5400031184D /* screen-pic.jpg */,
 			);
 			path = images;
@@ -194,7 +194,7 @@
 				37CA792125EEDA830031184D /* LaunchScreen.storyboard in Resources */,
 				37CA791E25EEDA830031184D /* Assets.xcassets in Resources */,
 				37CA792B25EEE5400031184D /* screen-pic.jpg in Resources */,
-				9E207C8C25FE91BE00C052AC /* pin.png in Resources */,
+				9E5EAC1D25FE2FFE00DDA410 /* pin.png in Resources */,
 				37CA791C25EEDA800031184D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,7 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -391,7 +391,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -408,13 +408,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WYKPH2VC79;
+				DEVELOPMENT_TEAM = N985FFVN3Q;
 				INFOPLIST_FILE = ARmap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.ar-frontend.ARmap";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.katevc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -434,7 +434,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.ar-frontend.ARmap";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.katevc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

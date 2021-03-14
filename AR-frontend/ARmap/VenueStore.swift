@@ -42,8 +42,9 @@ struct LocationStore {
                                          description: (venueEntry["description"] as! String),
                                          imageUrl: (venueEntry["image_url"] as! String),
                                          lat: (venueEntry["latitude"] as! NSNumber).floatValue,
-                                         lon:(venueEntry["longitude"] as! NSNumber).floatValue,
-                                         id:(venueEntry["venue_id"] as! Int)
+                                         lon: (venueEntry["longitude"] as! NSNumber).floatValue,
+                                         altitude: (venueEntry["altitude"] as! NSNumber).floatValue,
+                                         id: (venueEntry["venue_id"] as! Int)
                                              )]
                     } else {
                         print("getVenues: Received unexpected number of fields: \(venueEntry.count) instead of \(Location.nFields).")
@@ -90,6 +91,7 @@ struct LocationStore {
                                          imageUrl: (destEntry["image_url"] as! String),
                                          lat: (destEntry["latitude"] as! NSNumber).floatValue,
                                          lon:(destEntry["longitude"] as! NSNumber).floatValue,
+                                         altitude:(destEntry["altitude"] as! NSNumber).floatValue,
                                          id:(destEntry["destination_id"] as! Int)
                                              )]
                     } else {
