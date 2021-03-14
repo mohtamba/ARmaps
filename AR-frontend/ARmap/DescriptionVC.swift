@@ -36,7 +36,7 @@ class DescriptionVC: UIViewController{
         if let dest = segue.destination as? ARView2 {
             dest.lat = self.dest?.lat
             dest.lon = self.dest?.lon
-            
+            dest.altitude = self.dest?.altitude
         }
     }
 }
