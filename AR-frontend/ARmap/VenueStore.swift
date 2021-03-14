@@ -37,9 +37,7 @@ struct LocationStore {
                 print(venuesReceived)
                 for venueEntry in venuesReceived {
                     if (venueEntry.count == Location.nFields) {
-                        //print("to check what's in the venueentry")
-                        //TODO: pull destinations into the array
-                        //print(venueEntry["description"] ?? "")
+                        
                         venues += [Location(name: (venueEntry["name"] as! String),
                                          description: (venueEntry["description"] as! String),
                                          imageUrl: (venueEntry["image_url"] as! String),
