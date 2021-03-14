@@ -80,8 +80,8 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? ARView2 {
-            //dest.lat = venue_dictionary[
-            //dest.lon = venue_dictionary
+            dest.lat = venue_dictionary[
+            dest.lon = venue_dictionary
             
         }
     }
