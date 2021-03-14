@@ -32,4 +32,11 @@ class DescriptionVC: UIViewController{
         destinationDescription.sizeToFit()
         // Do any additional setup after loading the view.
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? ARView2 {
+            dest.lat = self.dest?.lat
+            dest.lon = self.dest?.lon
+            
+        }
+    }
 }

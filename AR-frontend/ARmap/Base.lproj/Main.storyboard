@@ -121,14 +121,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ez-mt-u0J">
-                                <rect key="frame" x="248" y="145" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="vWG-V8-OhK" kind="presentation" id="ngl-7z-6h2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Vi7-Wc-viX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -147,7 +139,6 @@
         <!--DescriptionVC-->
         <scene sceneID="bPS-u1-P23">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vpD-Lo-zOZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="4xi-h8-d2z" customClass="DescriptionVC" customModule="ARmap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IYV-a0-iT2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -182,6 +173,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go"/>
                             </button>
+                            <connections>
+                                <segue destination="vWG-V8-OhK" kind="presentation" id="d7n-hC-jGY"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -190,6 +184,7 @@
                         <outlet property="destinationName" destination="9Hw-wD-9HO" id="pCB-pd-gvy"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vpD-Lo-zOZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2594" y="82"/>
         </scene>
@@ -212,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9YG-Zd-VcO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2683" y="98"/>
+            <point key="canvasLocation" x="3426" y="82"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S2l-49-VKs">

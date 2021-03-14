@@ -24,7 +24,6 @@
 		37F584CD25EFFE3600315182 /* VenueTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F584CC25EFFE3600315182 /* VenueTableCell.swift */; };
 		9CEA091625FD718400229EE0 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA091525FD718400229EE0 /* ARView.swift */; };
 		9CEA097F25FD96A900229EE0 /* ARView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA097E25FD96A900229EE0 /* ARView2.swift */; };
-		9CEA099425FDA83200229EE0 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEA099325FDA83100229EE0 /* pin.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +48,6 @@
 		90D7E1666CD82758A1135467 /* Pods-ARmap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARmap.release.xcconfig"; path = "Target Support Files/Pods-ARmap/Pods-ARmap.release.xcconfig"; sourceTree = "<group>"; };
 		9CEA091525FD718400229EE0 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		9CEA097E25FD96A900229EE0 /* ARView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView2.swift; sourceTree = "<group>"; };
-		9CEA099325FDA83100229EE0 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin.png; path = "../../../../../Downloads/ARKit-CoreLocation-develop/ARKit+CoreLocation/Assets.xcassets/pin.imageset/pin.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +107,6 @@
 		37CA792D25EEE5490031184D /* images */ = {
 			isa = PBXGroup;
 			children = (
-				9CEA099325FDA83100229EE0 /* pin.png */,
 				37CA792A25EEE5400031184D /* screen-pic.jpg */,
 			);
 			path = images;
@@ -194,7 +191,6 @@
 				37CA792125EEDA830031184D /* LaunchScreen.storyboard in Resources */,
 				37CA791E25EEDA830031184D /* Assets.xcassets in Resources */,
 				37CA792B25EEE5400031184D /* screen-pic.jpg in Resources */,
-				9CEA099425FDA83200229EE0 /* pin.png in Resources */,
 				37CA791C25EEDA800031184D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
