@@ -20,7 +20,9 @@ class ARView2: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         /*AR setup */
-        let destCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat!), longitude: CLLocationDegrees(lon!))
+        self.destCoordinate.latitude = CLLocationDegrees(lat!)
+        self.destCoordinate.longitude = CLLocationDegrees(lon!)
+        //let destCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat!), longitude: CLLocationDegrees(lon!))
         let location = CLLocation(coordinate: destCoordinate, altitude: 300)
         
         let image = UIImage(named: "pin")!
@@ -113,7 +115,9 @@ class ARView2: UIViewController, CLLocationManagerDelegate {
         let location = CLLocation(coordinate: destCoordinate, altitude: currentLocation.altitude)
         let distance = sceneLocationView.sceneLocationManager.currentLocation?.distance(from: location)
         
-        print(distance as Any)
+        if distance! < 20 {
+            arrivalAlert(message: "You've reached your destination", entered: true)
+        }
         
     }
     
