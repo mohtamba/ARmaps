@@ -1,14 +1,14 @@
 import Foundation
 @propertyWrapper
-struct ChattPropWrapper {
-    private var chattVar: String?
+struct LocPropWrapper {
+    private var LocVar: String?
     var wrappedValue: String? {
-        get { return chattVar }
+        get { return LocVar }
         set {
             if let newValue = newValue {
-                chattVar = (newValue == "null" || newValue.isEmpty) ? nil : newValue
+                LocVar = (newValue == "null" || newValue.isEmpty) ? nil : newValue
             } else {
-                chattVar = nil
+                LocVar = nil
             }
         }
     }
@@ -17,11 +17,11 @@ struct ChattPropWrapper {
         self.wrappedValue = wrappedValue
     }
 }
-struct Venue{
-    var venue_name: String?
+struct Location {
+    var name: String?
     //var distance: String?
     var description: String?
-    @ChattPropWrapper var imageUrl: String? = nil
+    @LocPropWrapper var imageUrl: String? = nil
     var lat: Float?
     var lon: Float?
     var id: Int?
