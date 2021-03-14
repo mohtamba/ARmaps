@@ -84,16 +84,17 @@ struct LocationStore {
                 //let venuesReceived = jsonObj["data"] as ? [String: Any]
                 let destinationsReceived = jsonObj["data"] as? [[String:Any]] ?? []  //TODO: depend on what venues' names are in the tables
                 for destEntry in destinationsReceived {
-                    if (destEntry.count == Location.nFields) {
+                    /*NOTE - added 1 b/c destinations API actually has venue_id stored too */
+                    if (destEntry.count == Location.nFields + 1) {
                         destinations += [Location(name: (destEntry["name"] as! String),
                                          description: (destEntry["description"] as! String),
                                          imageUrl: (destEntry["image_url"] as! String),
                                          lat: (destEntry["latitude"] as! NSNumber).floatValue,
                                          lon:(destEntry["longitude"] as! NSNumber).floatValue,
-                                         id:(destEntry["venue_id"] as! Int)
+                                         id:(destEntry["destination_id"] as! Int)
                                              )]
                     } else {
-                        print("getVenues: Received unexpected number of fields: \(destEntry.count) instead of \(Location.nFields).")
+                        print("getDest: Received unexpected number of fields: \(destEntry.count).")
                     }
                 }
                 refresh(destinations)

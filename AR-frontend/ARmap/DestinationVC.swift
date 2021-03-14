@@ -18,7 +18,7 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     var spots_example = ["Hogwarts", "Olivanders", "Diagon Alley", "Platform 3/4", "Hogwarts Express","Azkeban"]
     var temp1 = Location(), temp2 = Location(), temp3 = Location(), temp4 = Location(), temp5 = Location(), temp6 = Location()
     func initialize_things(){
-        try1.append(temp1); try1.append(temp2); try1.append(temp3); try1.append(temp4); try1.append(temp5); try1.append(temp6)
+        /*try1.append(temp1); try1.append(temp2); try1.append(temp3); try1.append(temp4); try1.append(temp5); try1.append(temp6)*/
         print("after initialization")
         print(try1)
     }
@@ -41,8 +41,17 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         self.destinationList.reloadData()
         venueTitle.text = venueName
         venueTitle.sizeToFit()
-        print(try1)
+        //print(try1)
         print("after dest refresh")
+        for many in try1{
+            let spot_key = String(many.name!.prefix(1))
+            if var dest_values = destination_dictionary[spot_key]{
+                dest_values.append(many)
+                destination_dictionary[spot_key] = dest_values
+            } else{
+                destination_dictionary[spot_key] = [many]
+            }
+        }
         //fill in the venue dictionary
         //sort the dictionary keys in alphabetical order
         A_to_Z = [String] (destination_dictionary.keys)
