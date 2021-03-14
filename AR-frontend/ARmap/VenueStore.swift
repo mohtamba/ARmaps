@@ -53,9 +53,9 @@ struct LocationStore {
             }
             task.resume()
         }
-    func get_destination_by_Venues(refresh: @escaping ([Location]) -> (),
-                       completion: @escaping () -> ()) {
-            guard let apiUrl = URL(string: serverUrl+"api/venues/1/destinations/") else {
+    func get_destination_by_Venues( venueid: Int, refresh: @escaping ([Location]) -> (),
+                                   completion: @escaping () -> ()) {
+            guard let apiUrl = URL(string: serverUrl+"api/venues/\(venueid)/destinations/") else {
                 print("getDestinations: Bad URL")
                 return
             }

@@ -117,7 +117,7 @@ class Welcome: UITableViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? DestinationVC {
-            dest.venueName = selectedVenue.name
+            dest.venue = selectedVenue
             
         }
     }

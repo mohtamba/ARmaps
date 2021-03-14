@@ -7,7 +7,7 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     @IBOutlet weak var venueTitle: UILabel!
     @IBOutlet weak var destinationList: UITableView!
-    var venueName: String?
+    var venue: Location?
     let refreshControl = UIRefreshControl()
 
     //to create a dictionary of arrays
@@ -29,7 +29,7 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         self.destinationList.delegate = self
         self.destinationList.dataSource = self
         self.destinationList.reloadData()
-        venueTitle.text = venueName
+        venueTitle.text = venue?.name
         venueTitle.sizeToFit()
         
         for many in try1{
@@ -58,7 +58,7 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     private func refreshTimeline() {
         let store = LocationStore()
-        store.get_destination_by_Venues(refresh: { destinations in
+        store.get_destination_by_Venues(venueid: self.venue?.id! ?? 0, refresh: { destinations in
             //print(destinations)
             self.try1 = destinations
             print(self.try1)
