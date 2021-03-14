@@ -30,11 +30,18 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         self.destinationList.delegate = self
         self.destinationList.dataSource = self
         self.destinationList.reloadData()
-        venueTitle.text = venue?.name
+        if let venueName = venue?.name {
+            venueTitle.text = venueName
+        }
         venueTitle.sizeToFit()
         
+        guard let venueId = venue?.id else {
+            print("venue missing id")
+            return
+        }
+        
         for many in try1{
-            let spot_key = String(many.name!.prefix(1))
+            let spot_key = String(many.name!.prefix(venueId))
             if var dest_values = destination_dictionary[spot_key]{
                 dest_values.append(many)
                 destination_dictionary[spot_key] = dest_values
@@ -59,14 +66,20 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     private func refreshTimeline() {
         let store = LocationStore()
-        store.get_destination_by_Venues(venueid: self.venue?.id! ?? 0, refresh: { destinations in
+        
+        guard let venueId = venue?.id else {
+            print("venue missing id")
+            return
+        }
+        
+        store.get_destination_by_Venues(venueId: venueId, refresh: { destinations in
             //print(destinations)
             self.try1 = destinations
             print(self.try1)
             DispatchQueue.main.async {
                 self.destination_dictionary.removeAll()
                 for many in self.try1 {
-                    let spot_key = String(many.name!.prefix(1))
+                    let spot_key = String(many.name!.prefix(venueId))
                     if var destination_values = self.destination_dictionary[spot_key]{
                         destination_values.append(many)
                         self.destination_dictionary[spot_key] = destination_values

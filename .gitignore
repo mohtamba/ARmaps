@@ -364,4 +364,4 @@ dmypy.json
 
 # Terraform
 .terraform/
-*/.secrets.tfvars
+**/secrets.tfvars

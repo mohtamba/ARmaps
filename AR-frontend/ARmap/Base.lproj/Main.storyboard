@@ -121,6 +121,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ez-mt-u0J">
+                                <rect key="frame" x="248" y="145" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="vWG-V8-OhK" kind="presentation" id="ngl-7z-6h2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Vi7-Wc-viX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -184,6 +192,27 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="2594" y="82"/>
+        </scene>
+        <!--View2-->
+        <scene sceneID="xJR-Ag-d7w">
+            <objects>
+                <viewController id="vWG-V8-OhK" customClass="ARView2" customModule="ARmap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wqg-eH-BYz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qVX-2T-eO7" customClass="SceneView">
+                                <rect key="frame" x="0.0" y="-16" width="414" height="858"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </arscnView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DEC-fM-Sje"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9YG-Zd-VcO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2683" y="98"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S2l-49-VKs">
