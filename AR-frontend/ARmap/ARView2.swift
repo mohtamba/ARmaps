@@ -13,6 +13,7 @@ class ARView2: UIViewController, CLLocationManagerDelegate {
     var sceneLocationView = SceneLocationView()
     var lat: Float?
     var lon: Float?
+    var altitude: Float?
     let locationManager = CLLocationManager()
     var destCoordinate = CLLocationCoordinate2D()
     //var destNode = LocationAnnotationNode()
@@ -23,7 +24,7 @@ class ARView2: UIViewController, CLLocationManagerDelegate {
         self.destCoordinate.latitude = CLLocationDegrees(lat!)
         self.destCoordinate.longitude = CLLocationDegrees(lon!)
         //let destCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat!), longitude: CLLocationDegrees(lon!))
-        let location = CLLocation(coordinate: destCoordinate, altitude: 300)
+        let location = CLLocation(coordinate: destCoordinate, altitude: Double(altitude!))
         
         let image = UIImage(named: "pin")!
 
@@ -115,7 +116,7 @@ class ARView2: UIViewController, CLLocationManagerDelegate {
         let location = CLLocation(coordinate: destCoordinate, altitude: currentLocation.altitude)
         let distance = sceneLocationView.sceneLocationManager.currentLocation?.distance(from: location)
         
-        if distance! < 20 {
+        if distance! < 10 {
             arrivalAlert(message: "You've reached your destination", entered: true)
         }
         
