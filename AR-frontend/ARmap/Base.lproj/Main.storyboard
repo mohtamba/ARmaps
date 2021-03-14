@@ -172,10 +172,10 @@
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go"/>
+                                <connections>
+                                    <segue destination="vWG-V8-OhK" kind="presentation" id="mg8-A3-iB1"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="vWG-V8-OhK" kind="presentation" id="d7n-hC-jGY"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
