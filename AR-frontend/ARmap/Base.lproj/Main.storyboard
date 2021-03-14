@@ -163,19 +163,13 @@
                     <view key="view" contentMode="scaleToFill" id="Wqg-eH-BYz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qVX-2T-eO7" customClass="SceneView">
-                                <rect key="frame" x="0.0" y="-16" width="414" height="858"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </arscnView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="DEC-fM-Sje"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9YG-Zd-VcO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2683" y="98"/>
+            <point key="canvasLocation" x="2682.608695652174" y="97.767857142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S2l-49-VKs">
