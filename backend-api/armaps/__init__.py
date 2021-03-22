@@ -11,6 +11,15 @@ import armaps.api
 import armaps.model
 
 
+# Returning error codes
+def error_code(message, status_code):
+    """Return the error with JSON and error code."""
+    error = {}
+    error["message"] = message
+    error["status_code"] = status_code
+    return flask.jsonify(**error), status_code
+
+
 # Serve image files to the frontend
 @app.route('/media/<path:filename>', methods=["GET"])
 def get_image(filename):
