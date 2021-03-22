@@ -26,7 +26,7 @@ def get_destinations(venueid_url_slug):
     # Connect to database and get destinations
     cur = armaps.model.get_db()
     cur.execute(
-        "SELECT * FROM destinations WHERE venue_id == %s",
+        "SELECT * FROM destinations WHERE venue_id = %s",
         (venueid_url_slug,)
     )
     destinations = cur.fetchall()

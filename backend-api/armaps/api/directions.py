@@ -22,7 +22,7 @@ def get_directions(venueid_url_slug, destid_url_slug):
     # Connect to database and get destination
     cur = armaps.model.get_db()
     cur.execute(
-        "SELECT * FROM destinations WHERE venue_id == %s AND destination_id == %s",
+        "SELECT * FROM destinations WHERE venue_id = %s AND destination_id = %s",
         (venueid_url_slug, destid_url_slug,)
     )
     destination = cur.fetchone()
