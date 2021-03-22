@@ -8,6 +8,7 @@ URLs include:
 
 import flask
 import armaps
+import sys
 import dijkstra
 import geopy.distance
 
@@ -36,30 +37,31 @@ class Graph:
 
         # Get the waypoints
         cur.execute(
-            "SELECT * FROM waypoints WHERE venue_id == %s", 
+            "SELECT * FROM waypoints WHERE venue_id = %s", 
             (self.venue_id,)
         )
         waypoints = cur.fetchall()
 
         # Get the paths (edges)
         cur.execute(
-            "SELECT * FROM paths WHERE venue_id == %s",
+            "SELECT * FROM paths WHERE venue_id = %s",
             (self.venue_id,)
         )
         paths = cur.fetchall()
 
         # Transform list of waypoints into dictionary with key = waypoint_id
         for waypoint in waypoints:
-            self.waypoints[waypoint["waypoint_id"]] = {
-                "lat": waypoint["latitude"],
-                "lon": waypoint["longitude"]
+            self.waypoints[int(waypoint["waypoint_id"])] = {
+                "lat": float(waypoint["latitude"]),
+                "lon": float(waypoint["longitude"]),
+                "waypoint_id": int(waypoint["waypoint_id"])
             }
 
         # Calculate weights of edges in graph
         for path in paths:
             # Get two nodes (waypoints) associated with edge
-            inNode = path["inNode"]
-            outNode = path["outNode"]
+            inNode = int(path["innode"])
+            outNode = int(path["outnode"])
 
             # Get the coordinates of nodes
             inNode_coords = (self.waypoints[inNode]["lat"], self.waypoints[inNode]["lon"])
@@ -82,7 +84,7 @@ class Graph:
         min_distance = float("inf")
 
         # Find closest waypoint to user's location
-        for key, val in self.waypoints:
+        for key, val in self.waypoints.items():
             # Check to see if waypoint_id higher than user's
             if key > user_waypoint_id:
                 user_waypoint_id = key
@@ -116,10 +118,11 @@ class Graph:
         # Get waypoint_id of destination
         cur = armaps.model.get_db()
         cur.execute(
-            "SELECT * FROM waypoints WHERE destination_id == %s", 
+            "SELECT waypoint_id FROM waypoints WHERE destination_id = %s", 
             (destination_id,)
         )
-        dest_waypoint_id = cur.fetchone()
+        cur_output = cur.fetchone()
+        dest_waypoint_id = int(cur_output["waypoint_id"])
 
         # Get the path from starting waypoint to destination's waypoint
         path = dijkstra_output.get_path(dest_waypoint_id)
@@ -131,7 +134,8 @@ class Graph:
             data.append(
                 {
                     "lat": self.waypoints[path[i]]["lat"],
-                    "lon": self.waypoints[path[i]]["lon"]
+                    "lon": self.waypoints[path[i]]["lon"],
+                    "id": self.waypoints[path[i]]["waypoint_id"]
                 }
             )
         
@@ -153,7 +157,7 @@ def calculate_vars(data, lat, lon):
     time_estimate += first_distance * 20    # 3mph walking speed
 
     # Calculate for all other points
-    for i in range[1:len(data) - 1]:
+    for i in range(1, len(data) - 1):
         this_coords = (data[i]["lat"], data[i]["lon"])
         next_coords = (data[i + 1]["lat"], data[i + 1]["lon"])
 
@@ -169,7 +173,7 @@ def check_ids(venue_id, dest_id):
     # Check that venue exists
     cur = armaps.model.get_db()
     cur.execute(
-        "SELECT * FROM venues WHERE venue_id == %s", 
+        "SELECT * FROM venues WHERE venue_id = %s", 
         (venue_id,)
     )
     venue = cur.fetchone()
@@ -179,7 +183,7 @@ def check_ids(venue_id, dest_id):
 
     # Check that destination exists
     cur.execute(
-        "SELECT * FROM destinations WHERE destination_id == %s", 
+        "SELECT * FROM destinations WHERE destination_id = %s", 
         (dest_id,)
     )
     destination = cur.fetchone()
