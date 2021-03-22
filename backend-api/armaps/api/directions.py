@@ -164,7 +164,7 @@ def calculate_vars(data, lat, lon):
     return distance_to_dest, time_estimate
 
 
-def check_ids(venue_id, dest_id:
+def check_ids(venue_id, dest_id):
     """Returns true if venue or destination id are invalid."""
     # Check that venue exists
     cur = armaps.model.get_db()
