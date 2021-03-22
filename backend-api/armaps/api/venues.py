@@ -8,9 +8,11 @@ URLs include:
 
 import flask
 import armaps
-from distance import should_order_by_dist
 import geopy.distance
 
+def should_order_by_dist(lat, lon):
+    """ Returns True if we should order by distance """
+    return abs(lat) <= 90 and abs(lon) <= 180
 
 @armaps.app.route('/api/venues/', methods=["GET"])
 def get_venues():
@@ -27,7 +29,7 @@ def get_venues():
     # Sort the venues by name, alphabetically
     if should_order_by_dist(lat,lon):
         venues = sorted(venues,
-            key=geopy.distance.distance(user_coords, (i['latitude'], i['longitude'])).miles)
+            key=lambda i: geopy.distance.distance(user_coords, (i['latitude'], i['longitude'])).miles)
     else:
         venues = sorted(venues, key=lambda i: i["name"])
 
