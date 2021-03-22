@@ -95,7 +95,7 @@ class Graph:
             # Get the coordinates of nodes
             inNode_coords = (waypoint_dict[inNode]["lat"],waypoint_dict[inNode]["lon"])
             outNode_coords = (waypoint_dict[outNode]["lat"],waypoint_dict[outNode]["lon"])
-            distance = geopy.distance(inNode_coords, outNode_coords)
+            distance = geopy.distance.distance(inNode_coords, outNode_coords)
 
             # Add to weights data structure
             self.weights[(inNode, outNode)] = distance
@@ -127,7 +127,7 @@ class Graph:
                 user_waypoint_id = waypoint["waypoint_id"]
 
             # Calculate distance
-            distance = geopy.distance((lat, lon), (waypoint["latitude"], waypoint["longitude"]))
+            distance = geopy.distance.distance((lat, lon), (waypoint["latitude"], waypoint["longitude"]))
             if distance < min_distance:
                 min_distance = distance
                 closest_waypoint = waypoint["waypoint_id"]
@@ -147,6 +147,38 @@ class Graph:
         return user_waypoint_id
 
 
+    def get_path(self, starting_waypoint, destid_url_slug):
+        """Given starting way point id and destination id, find the shortest
+        path between them in the graph, return list of waypoints between to path."""
+        # TODO: finish
+        path = []
+        return path
+
+
+def calculate_vars(data, lat, lon):
+    """Given path data and starting point (lat, lon), calculate how far the
+    user's destination is from them, and the time estimate to get there."""
+    # Keep track of running distance and time calculations
+    distance_to_dest = 0.0
+    time_estimate = 0.0
+
+    # Calculate from starting dest to first point in data
+    user_coords = (lat, lon)
+    first_path_coords = (data[0]["lat"], data[0]["lon"])
+    first_distance = geopy.distance.distance(user_coords, first_path_coords)
+    distance_to_dest += first_distance
+    time_estimate += first_distance * 20    # 3mph walking speed
+
+    # Calculate for all other points
+    for i in range[1:len(data) - 1]:
+        this_coords = (data[i]["lat"], data[i]["lon"])
+        next_coords = (data[i + 1]["lat"], data[i + 1]["lon"])
+
+        distance = geopy.distance.distance(this_coords, next_coords)
+        distance_to_dest += distance
+        time_estimate += distance * 20    # 3mph walking speed
+
+    return distance_to_dest, time_estimate
 
 
 @armaps.app.route('/api/venues/<int:venueid_url_slug>/destinations/<int:destid_url_slug>/directions/',
@@ -165,14 +197,13 @@ def get_directions(venueid_url_slug, destid_url_slug):
     if abs(lat) > 90 or abs(lon) > 180:
         return armaps.error_code("Bad Request", 400)
 
-    # Get the graph from the database
+    # Get the graph from the database, and find the path
     graph = Graph(venueid_url_slug, lat, lon)
     starting_waypoint = graph.insert_user_location(lat, lon)
+    data = graph.get_path(starting_waypoint, destid_url_slug)
 
-    # Dummy variables
-    data = []
-    distance_to_dest = 3.6
-    time_estimate = 23
+    # Calculate distance to destination and time estimate, given path
+    distance_to_dest, time_estimate = calculate_vars(data, lat, lon)
 
     context = {
         "data": data,
