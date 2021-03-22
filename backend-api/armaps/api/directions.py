@@ -18,24 +18,18 @@ class Graph:
     def __init__(self, venue_id, lat, lon):
         # Set up member variables
         self.waypoints = {}
-        self.graph = {}
+        self.graph = dijkstra.Graph()
         self.venue_id = venue_id
 
         # Create graph from the database
         self.create_graph(lat, lon)
 
+
     def create_graph(self, lat, lon):
         """
-        Create graph from nodes/edges in db corresponding to given venue.
-        - Undirected, weighted graph
-        
-        graph = {
-            (1, 2): 5,
-            (1, 3): 7,
-            (2, 3): 9,
-            (2, 4): 4,
-            ...
-        }
+        Create graph from nodes/edges in db within specfic venue.
+        - undirected, weighted graph
+        - edge with corresponding weight (distance in miles)
         """
         # Open connection to the database (nodes)
         cur = armaps.model.get_db()
@@ -70,24 +64,16 @@ class Graph:
             # Get the coordinates of nodes
             inNode_coords = (self.waypoints[inNode]["lat"], self.waypoints[inNode]["lon"])
             outNode_coords = (self.waypoints[outNode]["lat"], self.waypoints[outNode]["lon"])
-            distance = geopy.distance.distance(inNode_coords, outNode_coords)
+            distance = geopy.distance.distance(inNode_coords, outNode_coords).miles
 
-            # Add to graph
-            self.graph[(inNode, outNode)] = distance
-            self.graph[(outNode, inNode)] = distance
+            # Add to graph (both ways for undirected)
+            self.graph.add_edge(inNode, outNode, distance)
+            self.graph.add_edge(outNode, inNode, distance)
 
 
     def insert_user_location(self, lat, lon):
         """Add user's location as starting waypoint to graph, connect
         waypoint to closest other in graph with edge, return waypoint id."""
-        # Get waypoints from db
-        cur = armaps.model.get_db()
-        cur.execute(
-            "SELECT * FROM waypoints WHERE venue_id == %s", 
-            (self.venue_id,)
-        )
-        waypoints = cur.fetchall()
-
         # Waypoint id for user's location
         user_waypoint_id = 0
 
@@ -96,23 +82,26 @@ class Graph:
         min_distance = float("inf")
 
         # Find closest waypoint to user's location
-        for waypoint in waypoints:
+        for key, val in self.waypoints:
             # Check to see if waypoint_id higher than user's
-            if waypoint["waypoint_id"] > user_waypoint_id:
-                user_waypoint_id = waypoint["waypoint_id"]
+            if key > user_waypoint_id:
+                user_waypoint_id = key
 
             # Calculate distance
-            distance = geopy.distance.distance((lat, lon), (waypoint["latitude"], waypoint["longitude"]))
+            user_coords = (lat, lon)
+            waypoint_coords = (val["lat"], val["lon"])
+            distance = geopy.distance.distance(user_coords, waypoint_coords).miles
+
             if distance < min_distance:
                 min_distance = distance
-                closest_waypoint = waypoint["waypoint_id"]
+                closest_waypoint = key
 
         # Increment highest waypoint id seen to get user's starting waypoint id
         user_waypoint_id += 1
 
         # Add to graph
-        self.graph[(user_waypoint_id, closest_waypoint)] = min_distance
-        self.graph[(closest_waypoint, user_waypoint_id)] = min_distance
+        self.graph.add_edge(user_waypoint_id, closest_waypoint, min_distance)
+        self.graph.add_edge(closest_waypoint, user_waypoint_id, min_distance)
 
         # Return starting waypoint id
         return user_waypoint_id
@@ -121,15 +110,8 @@ class Graph:
     def get_path(self, starting_waypoint, destination_id):
         """Given starting way point id and destination id, find the shortest
         path between them in the graph, return list of waypoints between to path."""
-        # Create a graph for dijkstra
-        d_graph = dijkstra.Graph()
-
-        # Add edges to the graph
-        for key, val in self.graph.items():
-            d_graph.add_edge(key[0], key[1], val)
-
         # Run dijkstra's algorithm
-        dijkstra_output = dijkstra.DijkstraSPF(d_graph, starting_waypoint)
+        dijkstra_output = dijkstra.DijkstraSPF(self.graph, starting_waypoint)
         
         # Get waypoint_id of destination
         cur = armaps.model.get_db()
@@ -166,7 +148,7 @@ def calculate_vars(data, lat, lon):
     # Calculate from starting dest to first point in data
     user_coords = (lat, lon)
     first_path_coords = (data[0]["lat"], data[0]["lon"])
-    first_distance = geopy.distance.distance(user_coords, first_path_coords)
+    first_distance = geopy.distance.distance(user_coords, first_path_coords).miles
     distance_to_dest += first_distance
     time_estimate += first_distance * 20    # 3mph walking speed
 
@@ -175,12 +157,38 @@ def calculate_vars(data, lat, lon):
         this_coords = (data[i]["lat"], data[i]["lon"])
         next_coords = (data[i + 1]["lat"], data[i + 1]["lon"])
 
-        distance = geopy.distance.distance(this_coords, next_coords)
+        distance = geopy.distance.distance(this_coords, next_coords).miles
         distance_to_dest += distance
         time_estimate += distance * 20    # 3mph walking speed
 
     return distance_to_dest, time_estimate
 
+
+def check_ids(venue_id, dest_id:
+    """Returns true if venue or destination id are invalid."""
+    # Check that venue exists
+    cur = armaps.model.get_db()
+    cur.execute(
+        "SELECT * FROM venues WHERE venue_id == %s", 
+        (venue_id,)
+    )
+    venue = cur.fetchone()
+
+    if venue is None:
+        return True
+
+    # Check that destination exists
+    cur.execute(
+        "SELECT * FROM destinations WHERE destination_id == %s", 
+        (dest_id,)
+    )
+    destination = cur.fetchone()
+
+    if destination is None:
+        return True
+
+    # Otherwise, return false
+    return False
 
 @armaps.app.route('/api/venues/<int:venueid_url_slug>/destinations/<int:destid_url_slug>/directions/',
                   methods=["GET"])
@@ -190,13 +198,17 @@ def get_directions(venueid_url_slug, destid_url_slug):
     lat = flask.request.args.get("lat", type=float)
     lon = flask.request.args.get("lon", type=float)
 
-    # Check for no parameters
+    # Check for no URL parameters
     if lat is None or lon is None:
         return armaps.error_code("Bad Request", 400)
 
-    # Check for invalid parameters
+    # Check for invalid URL parameters
     if abs(lat) > 90 or abs(lon) > 180:
         return armaps.error_code("Bad Request", 400)
+
+    # Check for invalid venue/destination id
+    if check_ids(venueid_url_slug, destid_url_slug):
+        return armaps.error_code("Not Found", 404)
 
     # Get the graph from the database, and find the path
     graph = Graph(venueid_url_slug, lat, lon)
@@ -214,4 +226,3 @@ def get_directions(venueid_url_slug, destid_url_slug):
     }
 
     return flask.jsonify(**context)
-
