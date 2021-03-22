@@ -8,6 +8,7 @@ URLs include:
 
 import flask
 import armaps
+import dijkstra
 import geopy.distance
 
 
@@ -16,8 +17,8 @@ class Graph:
 
     def __init__(self, venue_id, lat, lon):
         # Set up member variables
+        self.waypoints = {}
         self.graph = {}
-        self.weights = {}
         self.venue_id = venue_id
 
         # Create graph from the database
@@ -28,15 +29,7 @@ class Graph:
         Create graph from nodes/edges in db corresponding to given venue.
         - Undirected, weighted graph
         
-        Output format:
         graph = {
-            1: [2, 3],
-            2: [1, 3, 4],
-            3: [1, 2],
-            4: [2],
-            ...
-        }
-        weights = {
             (1, 2): 5,
             (1, 3): 7,
             (2, 3): 9,
@@ -61,45 +54,27 @@ class Graph:
         )
         paths = cur.fetchall()
 
-        # Build the undirected graph
-        for path in paths:
-            # Get two nodes (waypoints) associated with edge
-            inNode = path["inNode"]
-            outNode = path["outNode"]
-
-            # Add both (inNode, outNode) & (outNode, inNode)
-            if inNode not in self.graph:
-                self.graph[inNode] = [outNode]
-            else:
-                self.graph[inNode].append(outNode)
-
-            if outNode not in self.graph:
-                self.graph[outNode] = [inNode]
-            else:
-                self.graph[outNode].append(inNode)
-
         # Transform list of waypoints into dictionary with key = waypoint_id
-        waypoint_dict = {}
         for waypoint in waypoints:
-            waypoint_dict[waypoint["waypoint_id"]] = {
+            self.waypoints[waypoint["waypoint_id"]] = {
                 "lat": waypoint["latitude"],
                 "lon": waypoint["longitude"]
             }
 
-        # Calculate weights
+        # Calculate weights of edges in graph
         for path in paths:
             # Get two nodes (waypoints) associated with edge
             inNode = path["inNode"]
             outNode = path["outNode"]
 
             # Get the coordinates of nodes
-            inNode_coords = (waypoint_dict[inNode]["lat"],waypoint_dict[inNode]["lon"])
-            outNode_coords = (waypoint_dict[outNode]["lat"],waypoint_dict[outNode]["lon"])
+            inNode_coords = (self.waypoints[inNode]["lat"], self.waypoints[inNode]["lon"])
+            outNode_coords = (self.waypoints[outNode]["lat"], self.waypoints[outNode]["lon"])
             distance = geopy.distance.distance(inNode_coords, outNode_coords)
 
-            # Add to weights data structure
-            self.weights[(inNode, outNode)] = distance
-            self.weights[(outNode, inNode)] = distance
+            # Add to graph
+            self.graph[(inNode, outNode)] = distance
+            self.graph[(outNode, inNode)] = distance
 
 
     def insert_user_location(self, lat, lon):
@@ -136,23 +111,49 @@ class Graph:
         user_waypoint_id += 1
 
         # Add to graph
-        self.graph[user_waypoint_id] = closest_waypoint
-        self.graph[closest_waypoint] = user_waypoint_id
-
-        # Add to weights
-        self.weights[(user_waypoint_id, closest_waypoint)] = min_distance
-        self.weights[(closest_waypoint, user_waypoint_id)] = min_distance
+        self.graph[(user_waypoint_id, closest_waypoint)] = min_distance
+        self.graph[(closest_waypoint, user_waypoint_id)] = min_distance
 
         # Return starting waypoint id
         return user_waypoint_id
 
 
-    def get_path(self, starting_waypoint, destid_url_slug):
+    def get_path(self, starting_waypoint, destination_id):
         """Given starting way point id and destination id, find the shortest
         path between them in the graph, return list of waypoints between to path."""
-        # TODO: finish
-        path = []
-        return path
+        # Create a graph for dijkstra
+        d_graph = dijkstra.Graph()
+
+        # Add edges to the graph
+        for key, val in self.graph.items():
+            d_graph.add_edge(key[0], key[1], val)
+
+        # Run dijkstra's algorithm
+        dijkstra_output = dijkstra.DijkstraSPF(d_graph, starting_waypoint)
+        
+        # Get waypoint_id of destination
+        cur = armaps.model.get_db()
+        cur.execute(
+            "SELECT * FROM waypoints WHERE destination_id == %s", 
+            (destination_id,)
+        )
+        dest_waypoint_id = cur.fetchone()
+
+        # Get the path from starting waypoint to destination's waypoint
+        path = dijkstra_output.get_path(dest_waypoint_id)
+
+        # Excluding starting point in path, add coords of each waypoint to data
+        data = []
+
+        for i in range(1, len(path)):
+            data.append(
+                {
+                    "lat": self.waypoints[path[i]]["lat"],
+                    "lon": self.waypoints[path[i]]["lon"]
+                }
+            )
+        
+        return data
 
 
 def calculate_vars(data, lat, lon):
