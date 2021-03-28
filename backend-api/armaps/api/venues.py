@@ -26,10 +26,17 @@ def get_venues():
     cur.execute("SELECT * FROM venues")
     venues = cur.fetchall()
 
-    # Sort the venues by name, alphabetically
+    # Sort by distance or name
     if should_order_by_dist(lat,lon):
-        venues = sorted(venues,
-            key=lambda i: geopy.distance.distance(user_coords, (i['latitude'], i['longitude'])).miles)
+
+        # Include distance calculation in venue list
+        for venue in venues:
+            venue_coords = (venue["latitude"], venue["longitude"])
+            venue_distance = geopy.distance.distance(user_coords, venue_coords).miles
+            venue["distance"] = round(venue_distance, 1)
+
+        # Sort by distance
+        venues = sorted(venues, key=lambda i: i["distance"])
     else:
         venues = sorted(venues, key=lambda i: i["name"])
 

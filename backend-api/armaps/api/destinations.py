@@ -22,6 +22,7 @@ def get_destinations(venueid_url_slug):
     # Get url parameters if they exist
     lat = flask.request.args.get("lat", default=999, type=float)
     lon = flask.request.args.get("lon", default=999, type=float)
+    user_coords = (lat, lon)
 
     # Connect to database and get destinations
     cur = armaps.model.get_db()
@@ -31,10 +32,17 @@ def get_destinations(venueid_url_slug):
     )
     destinations = cur.fetchall()
 
-    user_coords = (lat, lon)
+    # Sort by distance or name
     if should_order_by_dist(lat, lon):
-        destinations = sorted(destinations,
-            key=lambda i: geopy.distance.distance(user_coords, (i['latitude'], i['longitude'])).miles)
+
+        # Include distance calculation in destination list
+        for dest in destinations:
+            dest_coords = (dest["latitude"], dest["longitude"])
+            dest_distance = geopy.distance.distance(user_coords, dest_coords).miles
+            dest["distance"] = round(dest_distance, 1)
+
+        # Sort by distance
+        destinations = sorted(destinations, key=lambda i: i["distance"])
     else:
         destinations = sorted(destinations, key=lambda i: i["name"])
 
