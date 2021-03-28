@@ -165,6 +165,10 @@ def calculate_vars(data, lat, lon):
         distance_to_dest += distance
         time_estimate += distance * 20    # 3mph walking speed
 
+    # Round distance and time estimates
+    distance_to_dest = round(distance_to_dest, 1)
+    time_estimate = round(time_estimate)
+
     return distance_to_dest, time_estimate
 
 
