@@ -170,25 +170,16 @@ def calculate_vars(data, lat, lon):
 
 def check_ids(venue_id, dest_id):
     """Returns true if venue or destination id are invalid."""
-    # Check that venue exists
+    # Check that venue destination pair exist in database
     cur = armaps.model.get_db()
     cur.execute(
-        "SELECT * FROM venues WHERE venue_id = %s", 
-        (venue_id,)
+        "SELECT * FROM destinations WHERE venue_id = %s AND destination_id = %s", 
+        (venue_id, dest_id,)
     )
-    venue = cur.fetchone()
+    result = cur.fetchone()
 
-    if venue is None:
-        return True
-
-    # Check that destination exists
-    cur.execute(
-        "SELECT * FROM destinations WHERE destination_id = %s", 
-        (dest_id,)
-    )
-    destination = cur.fetchone()
-
-    if destination is None:
+    # Return true (error) if no match
+    if result is None:
         return True
 
     # Otherwise, return false
