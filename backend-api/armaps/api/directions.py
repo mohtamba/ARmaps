@@ -194,6 +194,30 @@ def check_ids(venue_id, dest_id):
     # Otherwise, return false
     return False
 
+
+def path_correction(data, user_coords):
+    """Correct path so that user doesn't backtrack to first waypoint."""
+    # Return list if it only has the destination
+    if len(data) == 1:
+        return data
+
+    # Calculate distance from user to second waypoint
+    second_coords = (data[1]["lat"], data[1]["lon"])
+    user_second_dist = geopy.distance.distance(user_coords, second_coords).miles
+
+    # Calculate distance from first waypoint to second waypoint
+    first_coords = (data[0]["lat"], data[0]["lon"])
+    first_second_dist = geopy.distance.distance(first_coords, second_coords).miles
+
+    # Determine if path correction is applicable
+    if user_second_dist < first_second_dist:
+        # Delete first element of list so that user doesn't backtrack
+        return data[1:]
+    else:
+        # No path correction needed
+        return data
+
+
 @armaps.app.route('/api/venues/<int:venueid_url_slug>/destinations/<int:destid_url_slug>/directions/',
                   methods=["GET"])
 def get_directions(venueid_url_slug, destid_url_slug):
@@ -218,12 +242,13 @@ def get_directions(venueid_url_slug, destid_url_slug):
     graph = Graph(venueid_url_slug, lat, lon)
     starting_waypoint = graph.insert_user_location(lat, lon)
     data = graph.get_path(starting_waypoint, destid_url_slug)
+    correct_data = path_correction(data, (lat, lon))
 
     # Calculate distance to destination and time estimate, given path
-    distance_to_dest, time_estimate = calculate_vars(data, lat, lon)
+    distance_to_dest, time_estimate = calculate_vars(correct_data, lat, lon)
 
     context = {
-        "data": data,
+        "data": correct_data,
         "url": "/api/venues/" + str(venueid_url_slug) + "/destinations/" + str(destid_url_slug) + "/directions/",
         "distance": distance_to_dest,
         "time_estimate": time_estimate
