@@ -139,6 +139,8 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if let dest = segue.destination as? DescriptionVC {
             dest.dest = selectedDestination
             dest.venueid = venue?.id
+
+            dest.venueId = venue?.id
         }
     }
 }

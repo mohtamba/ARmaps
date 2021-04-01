@@ -29,6 +29,15 @@ struct Location {
     //add geodata afterwards
     static let nFields = 7
 }
+
+struct Directions {
+    var data: [[String: Any]]?
+    var distance: NSNumber?
+    var time: NSNumber?
+    
+    
+    static let nFields = 3
+}
 /*Ideas from the apple instruction page
   To create an extension to the Venue model and add an initializer that takes
   as an argument a Dictionary that was provided by JSONSerialization framework*/
