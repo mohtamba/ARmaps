@@ -168,8 +168,20 @@
                                     <constraint firstAttribute="width" constant="250" id="xa4-g2-zZS"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEi-Wn-nwh" customClass="destinationDescription">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEi-Wn-nwh" customClass="destinationDescription">
+                                <rect key="frame" x="16" y="505" width="382" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfX-08-hDF" customClass="destinationTime">
                                 <rect key="frame" x="16" y="410" width="382" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FX-lU-Biz" customClass="destinationDistance">
+                                <rect key="frame" x="20" y="454" width="73" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -179,13 +191,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9Hw-wD-9HO" firstAttribute="top" secondItem="RJU-lq-eni" secondAttribute="top" constant="16" id="3hD-zz-bxb"/>
+                            <constraint firstItem="bfX-08-hDF" firstAttribute="leading" secondItem="RJU-lq-eni" secondAttribute="leading" constant="16" id="4s8-6M-BJC"/>
                             <constraint firstItem="TEi-Wn-nwh" firstAttribute="leading" secondItem="RJU-lq-eni" secondAttribute="leading" constant="16" id="DIO-BN-SFA"/>
+                            <constraint firstItem="RJU-lq-eni" firstAttribute="trailing" secondItem="2FX-lU-Biz" secondAttribute="trailing" constant="16" id="PtH-aq-olC"/>
+                            <constraint firstItem="2FX-lU-Biz" firstAttribute="top" secondItem="bfX-08-hDF" secondAttribute="bottom" constant="16" id="VNk-sw-Op9"/>
                             <constraint firstItem="9Hw-wD-9HO" firstAttribute="leading" secondItem="RJU-lq-eni" secondAttribute="leading" id="Z98-X7-1gx"/>
                             <constraint firstItem="RJU-lq-eni" firstAttribute="trailing" secondItem="TEi-Wn-nwh" secondAttribute="trailing" constant="16" id="Zb7-XN-9I6"/>
-                            <constraint firstItem="TEi-Wn-nwh" firstAttribute="top" secondItem="IM3-2d-Ln2" secondAttribute="bottom" constant="16" id="g10-T8-QpK"/>
+                            <constraint firstItem="RJU-lq-eni" firstAttribute="trailing" secondItem="bfX-08-hDF" secondAttribute="trailing" constant="16" id="azA-ev-U3x"/>
+                            <constraint firstItem="bfX-08-hDF" firstAttribute="top" secondItem="IM3-2d-Ln2" secondAttribute="bottom" constant="16" id="gAV-I4-wfb"/>
                             <constraint firstItem="IM3-2d-Ln2" firstAttribute="top" secondItem="9Hw-wD-9HO" secondAttribute="bottom" constant="16" id="jOE-yz-tMK"/>
                             <constraint firstItem="IM3-2d-Ln2" firstAttribute="centerX" secondItem="IYV-a0-iT2" secondAttribute="centerX" id="jpY-T5-Gsb"/>
+                            <constraint firstItem="TEi-Wn-nwh" firstAttribute="top" secondItem="2FX-lU-Biz" secondAttribute="bottom" constant="16" id="lMx-y1-obq"/>
                             <constraint firstItem="RJU-lq-eni" firstAttribute="trailing" secondItem="9Hw-wD-9HO" secondAttribute="trailing" id="t1I-eA-WIq"/>
+                            <constraint firstItem="2FX-lU-Biz" firstAttribute="leading" secondItem="RJU-lq-eni" secondAttribute="leading" constant="16" id="tb5-0r-O2f"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ixA-nB-DSP">
@@ -202,13 +220,15 @@
                     </navigationItem>
                     <connections>
                         <outlet property="destinationDescription" destination="TEi-Wn-nwh" id="3Ge-sq-LHE"/>
+                        <outlet property="destinationDistance" destination="2FX-lU-Biz" id="6TH-V5-jng"/>
                         <outlet property="destinationImage" destination="IM3-2d-Ln2" id="TeR-G7-3dq"/>
                         <outlet property="destinationName" destination="9Hw-wD-9HO" id="pCB-pd-gvy"/>
+                        <outlet property="destinationTime" destination="bfX-08-hDF" id="6oB-qK-6rC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vpD-Lo-zOZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2594" y="82"/>
+            <point key="canvasLocation" x="2592.753623188406" y="81.696428571428569"/>
         </scene>
         <!--View2-->
         <scene sceneID="xJR-Ag-d7w">
