@@ -14,13 +14,18 @@ class ARView2: UIViewController {
     var lat: Float?
     var lon: Float?
     var altitude: Float?
+    var venueid: Int?
+    var destid: Int?
     let locationManager = CLLocationManager()
     var destCoordinate = CLLocationCoordinate2D()
+    let refreshControl = UIRefreshControl()
+    var waypoints: Waypoints
         
     //var destNode = LocationAnnotationNode()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl.addTarget(self, action: #selector(DestinationVC.handleRefresh(_:)), for: UIControl.Event.valueChanged)
 
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
@@ -35,6 +40,9 @@ class ARView2: UIViewController {
 
         let annotationNode = LocationAnnotationNode(location: location, image: image)
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+        
+        
+            
         sceneLocationView.run()
         view.addSubview(sceneLocationView)
     }
@@ -55,6 +63,25 @@ class ARView2: UIViewController {
             locationManager.stopUpdatingLocation()
         }
         
+    }
+    
+    func getDirectionWaypoints() {
+        let store = LocationStore()
+        
+        
+        for point in waypoints.data{
+            
+            var pointCoordainte = CLLocationCoordinate2D()
+            pointCoordinate.latitude = CLLocationDegrees(point.lat)
+            pointCoordinate.longitude = CLLocationDegrees(point.lon)
+            
+            let location = CLLocation(coordinate: pointCoordinate, altitude: Double(altitude!))
+        
+            let image = UIImage(named: "pin")!
+
+            let annotationNode = LocationAnnotationNode(location: location, image: image)
+            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+        }
     }
 }
 

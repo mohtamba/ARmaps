@@ -10,6 +10,7 @@ import SDWebImage
 
 class DescriptionVC: UIViewController{
     var dest: Location?
+    var venueid: Int?
     
     
     @IBOutlet weak var destinationName: UILabel!
@@ -30,6 +31,8 @@ class DescriptionVC: UIViewController{
         destinationName.sizeToFit()
         destinationDescription.text = dest?.description
         destinationDescription.sizeToFit()
+        
+        
         // Do any additional setup after loading the view.
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,6 +40,8 @@ class DescriptionVC: UIViewController{
             dest.lat = self.dest?.lat
             dest.lon = self.dest?.lon
             dest.altitude = self.dest?.altitude
+            dest.venueid = self.venueid
+            dest.destid = self.dest?.id
         }
     }
 }
