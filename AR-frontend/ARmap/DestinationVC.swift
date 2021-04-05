@@ -138,7 +138,6 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? DescriptionVC {
             dest.dest = selectedDestination
-            dest.venueid = venue?.id
 
             dest.venueId = venue?.id
         }

@@ -12,7 +12,6 @@ import Foundation
 
 class DescriptionVC: UIViewController, CLLocationManagerDelegate{
     var dest: Location?
-    var venueid: Int?
     var venueId: Int?
     var directions: [[String: Any]]?
     let locationManager = CLLocationManager()
@@ -114,8 +113,8 @@ class DescriptionVC: UIViewController, CLLocationManagerDelegate{
             dest.lat = self.dest?.lat
             dest.lon = self.dest?.lon
             dest.altitude = self.dest?.altitude
-            dest.venueid = self.venueid
             dest.destid = self.dest?.id
+            dest.directions = self.directions
         }
     }
     
