@@ -40,6 +40,10 @@ class DescriptionVC: UIViewController, CLLocationManagerDelegate{
         destinationDescription.text = dest?.description
         destinationDescription.sizeToFit()
         
+
+        
+        // Do any additional setup after loading the view.
+
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
         
@@ -101,6 +105,7 @@ class DescriptionVC: UIViewController, CLLocationManagerDelegate{
         }.resume()
         
     
+
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -108,6 +113,8 @@ class DescriptionVC: UIViewController, CLLocationManagerDelegate{
             dest.lat = self.dest?.lat
             dest.lon = self.dest?.lon
             dest.altitude = self.dest?.altitude
+            dest.destid = self.dest?.id
+            dest.directions = self.directions
         }
     }
     
