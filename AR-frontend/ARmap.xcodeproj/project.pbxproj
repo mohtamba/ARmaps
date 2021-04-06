@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		110302C325F58292005B9558 /* DestinationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110302C225F58292005B9558 /* DestinationVC.swift */; };
-		1142E1DB25F4873900B7AD8C /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1142E1DA25F4873900B7AD8C /* Destination.swift */; };
 		1189CC0825F64BB50094C810 /* DestinationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1189CC0725F64BB50094C810 /* DestinationTableCell.swift */; };
 		118F0DC625FDB70E00DDAB10 /* DescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118F0DC525FDB70E00DDAB10 /* DescriptionVC.swift */; };
 		1A23ED1F79CAAF41FC26F653 /* Pods_ARmap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1A0EE82D9E18674389336B /* Pods_ARmap.framework */; };
@@ -25,11 +24,11 @@
 		9CEA091625FD718400229EE0 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA091525FD718400229EE0 /* ARView.swift */; };
 		9CEA097F25FD96A900229EE0 /* ARView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA097E25FD96A900229EE0 /* ARView2.swift */; };
 		9E5EAC1D25FE2FFE00DDA410 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E5EAC1C25FE2FFE00DDA410 /* pin.png */; };
+		9E62ED0B26166FA700F87A6E /* DirectionsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E62ED0A26166FA700F87A6E /* DirectionsStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		110302C225F58292005B9558 /* DestinationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationVC.swift; sourceTree = "<group>"; };
-		1142E1DA25F4873900B7AD8C /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		1189CC0725F64BB50094C810 /* DestinationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationTableCell.swift; sourceTree = "<group>"; };
 		118F0DC525FDB70E00DDAB10 /* DescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionVC.swift; sourceTree = "<group>"; };
 		2FD5D90A41EC8008F0F01762 /* Pods-ARmap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARmap.debug.xcconfig"; path = "Target Support Files/Pods-ARmap/Pods-ARmap.debug.xcconfig"; sourceTree = "<group>"; };
@@ -50,6 +49,7 @@
 		9CEA091525FD718400229EE0 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		9CEA097E25FD96A900229EE0 /* ARView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView2.swift; sourceTree = "<group>"; };
 		9E5EAC1C25FE2FFE00DDA410 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
+		9E62ED0A26166FA700F87A6E /* DirectionsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 				37CA791F25EEDA830031184D /* LaunchScreen.storyboard */,
 				37CA792225EEDA830031184D /* Info.plist */,
 				37F584C725EFE8D200315182 /* VenueStore.swift */,
-				1142E1DA25F4873900B7AD8C /* Destination.swift */,
+				9E62ED0A26166FA700F87A6E /* DirectionsStore.swift */,
 				37CA792D25EEE5490031184D /* images */,
 			);
 			path = ARmap;
@@ -251,6 +251,7 @@
 				37F584C825EFE8D200315182 /* VenueStore.swift in Sources */,
 				110302C325F58292005B9558 /* DestinationVC.swift in Sources */,
 				37F584CD25EFFE3600315182 /* VenueTableCell.swift in Sources */,
+				9E62ED0B26166FA700F87A6E /* DirectionsStore.swift in Sources */,
 				1189CC0825F64BB50094C810 /* DestinationTableCell.swift in Sources */,
 				37F584C425EFE1D600315182 /* Welcome.swift in Sources */,
 				9CEA091625FD718400229EE0 /* ARView.swift in Sources */,
@@ -258,7 +259,6 @@
 				37CA791525EEDA800031184D /* AppDelegate.swift in Sources */,
 				37CA791725EEDA800031184D /* SceneDelegate.swift in Sources */,
 				9CEA097F25FD96A900229EE0 /* ARView2.swift in Sources */,
-				1142E1DB25F4873900B7AD8C /* Destination.swift in Sources */,
 				118F0DC625FDB70E00DDAB10 /* DescriptionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,8 +408,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N985FFVN3Q;
+				DEVELOPMENT_TEAM = 9QBAHU4TXU;
 				INFOPLIST_FILE = ARmap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -417,7 +418,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.katevc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -428,8 +429,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WYKPH2VC79;
+				DEVELOPMENT_TEAM = 9QBAHU4TXU;
 				INFOPLIST_FILE = ARmap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,7 +439,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.katevc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

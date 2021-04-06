@@ -34,8 +34,6 @@ struct Directions {
     var data: [[String: Any]]?
     var distance: NSNumber?
     var time: NSNumber?
-    
-    
     static let nFields = 3
 }
 /*Ideas from the apple instruction page
