@@ -5,8 +5,10 @@
  */
 import Foundation
 struct LocationStore {
+    
+    
     private let serverUrl = "https://api.armaps.net/"
-    func getVenues(refresh: @escaping ([Location]) -> (),
+    mutating func getVenues(refresh: @escaping ([Location]) -> (),
                        completion: @escaping () -> ()) {
             guard let apiUrl = URL(string: serverUrl+"api/venues/") else {
                 print("getVenues: Bad URL")
@@ -35,15 +37,20 @@ struct LocationStore {
                 //let venuesReceived = jsonObj["data"] as ? [String: Any]
                 let venuesReceived = jsonObj["data"] as? [[String:Any]] ?? []  //TODO: depend on what venues' names are in the tables
                 print(venuesReceived)
+                print("follows")
+                //Get rid of settings of distance once the backend is down
+                var counter = 1
+                var distances_temp: [Double] = [0.1,0.3,1.4,1.6,2.4,2.6,3.4,4.4]
                 for venueEntry in venuesReceived {
                     if (venueEntry.count == Location.nFields) {
-                        
+                        counter += 1
                         venues += [Location(name: (venueEntry["name"] as! String),
                                          description: (venueEntry["description"] as! String),
                                          imageUrl: (venueEntry["image_url"] as! String),
                                          lat: (venueEntry["latitude"] as! NSNumber).floatValue,
                                          lon: (venueEntry["longitude"] as! NSNumber).floatValue,
                                          altitude: (venueEntry["altitude"] as! NSNumber).floatValue,
+                                         distance: distances_temp[counter%8],
                                          id: (venueEntry["venue_id"] as! Int)
                                              )]
                     } else {
