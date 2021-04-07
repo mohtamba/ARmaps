@@ -132,8 +132,16 @@ class ARView2: UIViewController {
 extension UIViewController {
   func arrivalAlert(message: String, entered: Bool) {
     let alert = UIAlertController(title: "Arrived", message: message, preferredStyle: .alert)
-    let action = UIAlertAction(title: "OK", style: .default)
-    alert.addAction(action)
+    let okAction = UIAlertAction(title: "Return to navigation", style: .default)
+    let action1 = UIAlertAction(title: "View nearby destinations", style: .default) { (action) in
+        let switchViewController = self.navigationController?.viewControllers[1] as! DestinationVC
+        self.navigationController?.popToViewController(switchViewController, animated: true)
+
+        
+        
+    }
+    alert.addAction(okAction)
+    alert.addAction(action1)
     present(alert, animated: true, completion: nil)
   }
 }

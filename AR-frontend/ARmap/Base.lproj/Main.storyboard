@@ -13,7 +13,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="Welcome" title="Welcome" id="8Zq-dt-BxF" customClass="Welcome" customModule="ARmap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jqf-4s-W0b">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -82,13 +82,13 @@
         <!--DestinationVC-->
         <scene sceneID="Rao-O9-2ej">
             <objects>
-                <viewController id="KOH-x3-DUX" customClass="DestinationVC" customModule="ARmap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Destination" id="KOH-x3-DUX" customClass="DestinationVC" customModule="ARmap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eeE-xr-Qmp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xVp-ps-FWT">
-                                <rect key="frame" x="0.0" y="228" width="414" height="668"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="702"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DestinationTableCell" rowHeight="134" id="TXR-os-WRW" customClass="DestinationTableCell" customModule="ARmap" customModuleProvider="target">
@@ -114,7 +114,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fv-tz-Q4A" customClass="venueName">
-                                <rect key="frame" x="0.0" y="138" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="QSO-fd-E27"/>
                                 </constraints>
@@ -152,17 +152,17 @@
             <objects>
                 <viewController id="4xi-h8-d2z" customClass="DescriptionVC" customModule="ARmap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IYV-a0-iT2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hw-wD-9HO" customClass="destinationName">
-                                <rect key="frame" x="0.0" y="104" width="414" height="24"/>
+                                <rect key="frame" x="0.0" y="16" width="414" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IM3-2d-Ln2" customClass="destinationImage">
-                                <rect key="frame" x="82" y="144" width="250" height="250"/>
+                                <rect key="frame" x="82" y="56" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="Awx-YS-xYI"/>
                                     <constraint firstAttribute="width" constant="250" id="xa4-g2-zZS"/>
@@ -175,7 +175,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfX-08-hDF" customClass="destinationTime">
-                                <rect key="frame" x="16" y="410" width="382" height="20.5"/>
+                                <rect key="frame" x="16" y="322" width="382" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -213,7 +213,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Start Navigation"/>
                                 <connections>
-                                    <segue destination="vWG-V8-OhK" kind="presentation" id="mg8-A3-iB1"/>
+                                    <segue destination="vWG-V8-OhK" kind="show" id="mg8-A3-iB1"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -240,10 +240,14 @@
                         <viewLayoutGuide key="safeArea" id="DEC-fM-Sje"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="CrQ-sS-ues"/>
+                    <connections>
+                        <segue destination="8Zq-dt-BxF" kind="show" identifier="viewNearby" id="gxR-nz-4UP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9YG-Zd-VcO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3426" y="82"/>
+            <point key="canvasLocation" x="3457" y="82"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S2l-49-VKs">
@@ -264,6 +268,10 @@
             <point key="canvasLocation" x="140.57971014492756" y="98.4375"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="EYl-7x-MEN"/>
+        <segue reference="gxR-nz-4UP"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
