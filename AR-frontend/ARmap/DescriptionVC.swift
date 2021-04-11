@@ -33,8 +33,15 @@ class DescriptionVC: UIViewController, CLLocationManagerDelegate{
         super.viewDidLoad()
         let imageEnd = String((dest?.imageUrl)!)
         let imageUrl = "https://api.armaps.net\(imageEnd)"
+        let placeHolderImage = UIImage(named: "placeholder")!
         print(imageUrl)
-        destinationImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(systemName: "photo"), options: [.progressiveLoad])
+        destinationImage .sd_setImage(with: URL(string: imageUrl), placeholderImage: placeHolderImage, options: [.continueInBackground], context: nil, progress: nil, completed: {(downloadedImage, downloadException, cacheType, downloadURL) in
+                    if let downloadException = downloadException {
+                        print("Error downloading image: \(downloadException.localizedDescription)")
+                    } else {
+                        print("successfully downloaded image: \(String(describing: downloadURL?.absoluteString))")
+                    }
+                })
         destinationName.text = dest?.name
         destinationName.sizeToFit()
         destinationDescription.text = dest?.description
@@ -115,6 +122,8 @@ class DescriptionVC: UIViewController, CLLocationManagerDelegate{
             dest.altitude = self.dest?.altitude
             dest.destid = self.dest?.id
             dest.directions = self.directions
+            dest.name = self.dest?.name
+            dest.venueid = self.venueId
         }
     }
     

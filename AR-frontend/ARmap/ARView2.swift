@@ -16,12 +16,29 @@ class ARView2: UIViewController {
     var altitude: Float?
     var venueid: Int?
     var destid: Int?
+    var name: String?
     var directions: [[String: Any]]?
     let locationManager = CLLocationManager()
     var destCoordinate = CLLocationCoordinate2D()
     let refreshControl = UIRefreshControl()
-        
+    var trydirections = Directions()
+    
+    var updateInfoLabelTimer: Timer?
+
+    @IBOutlet weak var ContentView: UIView!
+    
+    @IBOutlet weak var LabelView: UIView!
+    
+    @IBOutlet weak var timeToDest: UILabel!
+    @IBOutlet weak var showDestName: UILabel!
+    
     //var destNode = LocationAnnotationNode()
+    
+    /*class func loadFromStoryboard() -> POIViewController {
+        return UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "ARView2") as! POIViewController
+        // swiftlint:disable:previous force_cast
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +57,12 @@ class ARView2: UIViewController {
 
         let annotationNode = LocationAnnotationNode(location: location, image: image)
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+        //call first so you fill values before entering timer loop
+        updateInfoLabel()
+        
+        updateInfoLabelTimer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true) { [weak self] _ in
+            self?.updateInfoLabel()
+        }
         
         //*claire testing*//
         
@@ -82,13 +105,21 @@ class ARView2: UIViewController {
         //getDirectionWaypoints()
             
         sceneLocationView.run()
-        view.addSubview(sceneLocationView)
-    }
+        ContentView.addSubview(sceneLocationView)
+        sceneLocationView.frame = ContentView.bounds
+        
+        showDestName.text = "You are navigating to:"
+        if let name = self.name {
+            showDestName.text!.append(" \(name)\n")
+        }
+        print(showDestName.text!)
 
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        sceneLocationView.frame = view.bounds
+        sceneLocationView.frame = ContentView.bounds
     }
 
     func monitor_distance(location: CLLocation) {
@@ -103,6 +134,31 @@ class ARView2: UIViewController {
         
     }
     
+    @objc
+    func updateInfoLabel() {
+        //timeToDest.text = " Hello this is a test \n"
+        let store = DirectionStore()
+                
+        guard let destinationId = destid else {
+            print("missing destination id")
+            return
+        }
+        guard let vID = venueid else {
+            print("missing venue id")
+            return
+        }
+        
+        store.getDirections(venueId: vID, destinationId: destinationId, latitude: Float(self.destCoordinate.latitude), longitude: Float(self.destCoordinate.longitude), refresh: { directs in
+            self.trydirections = directs
+            print(self.trydirections)
+            DispatchQueue.main.async {
+                self.timeToDest.text = "Time to Destination: " + String(self.trydirections.time!.intValue) + " minutes"
+            }
+        }) {
+           
+        }
+        print("timer called")
+    }
 //    func getDirectionWaypoints() {
 //
 //        for point in directions ?? []{
