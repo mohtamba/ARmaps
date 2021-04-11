@@ -164,6 +164,26 @@ class Attempt: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             return 0
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            // event handler when a cell is tapped
+        switch(mysegment.selectedSegmentIndex){
+        case 0:
+            let venue_key = A_to_Z[indexPath.section]
+            let vee = venue_dictionary[venue_key]
+            selectedVenue = vee![indexPath.row]
+            tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        case 1:
+            let venue_key = zero_to_five[indexPath.section]
+            let vee = venue_dictionary[venue_key]
+            selectedVenue = vee![indexPath.row]
+            tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        default:
+            return;
+        }
+        performSegue(withIdentifier: "u1", sender: self)
+    }
+    
+    
     //To manipulate the two dictionaries on change of filtered_data
     func manipulate_library(){
         self.venue_dictionary.removeAll()
