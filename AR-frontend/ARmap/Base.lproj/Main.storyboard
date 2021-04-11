@@ -8,77 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Welcome-->
-        <scene sceneID="8co-Xx-cAo">
-            <objects>
-                <tableViewController storyboardIdentifier="Welcome" title="Welcome" id="8Zq-dt-BxF" customClass="Welcome" customModule="ARmap" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jqf-4s-W0b">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VenueTableCell" rowHeight="134" id="KC9-rP-eZo" userLabel="VenueTableCell" customClass="VenueTableCell" customModule="ARmap" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="134"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KC9-rP-eZo" id="pob-sz-rI4">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="134"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Venue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCD-04-PiL" userLabel="name_venue">
-                                            <rect key="frame" x="20" y="11" width="374" height="40"/>
-                                            <accessibility key="accessibilityConfiguration" identifier="venue_name" label="name_venue"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="grn-mP-wIR"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMq-Wc-cxq" userLabel="Distance ">
-                                            <rect key="frame" x="20" y="59" width="374" height="56"/>
-                                            <accessibility key="accessibilityConfiguration" label="Distance "/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="HMq-Wc-cxq" firstAttribute="trailing" secondItem="pob-sz-rI4" secondAttribute="trailingMargin" id="5ck-0S-gxY"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="HMq-Wc-cxq" secondAttribute="bottom" constant="8" id="DwQ-az-uwk"/>
-                                        <constraint firstItem="GCD-04-PiL" firstAttribute="top" secondItem="pob-sz-rI4" secondAttribute="topMargin" id="GqO-1g-Vg9"/>
-                                        <constraint firstItem="GCD-04-PiL" firstAttribute="leading" secondItem="pob-sz-rI4" secondAttribute="leadingMargin" id="MSO-Q1-tFE"/>
-                                        <constraint firstItem="HMq-Wc-cxq" firstAttribute="top" secondItem="GCD-04-PiL" secondAttribute="bottom" constant="8" id="ptg-aj-49x"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="GCD-04-PiL" secondAttribute="trailing" id="qJy-eW-eez"/>
-                                        <constraint firstItem="HMq-Wc-cxq" firstAttribute="leading" secondItem="pob-sz-rI4" secondAttribute="leadingMargin" id="w2c-bJ-atZ"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <accessibility key="accessibilityConfiguration" identifier="VenueTableCell" label="VenueTableCell">
-                                    <bool key="isElement" value="YES"/>
-                                </accessibility>
-                                <connections>
-                                    <outlet property="distance" destination="HMq-Wc-cxq" id="Xef-kK-a0G"/>
-                                    <outlet property="name_venue" destination="GCD-04-PiL" id="7Af-RO-Z3g"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="8Zq-dt-BxF" id="q7j-LS-xLr"/>
-                            <outlet property="delegate" destination="8Zq-dt-BxF" id="Uha-4h-o88"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Select nearby venues to get started" id="aqw-LR-21Q"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="LMR-FS-Gy4">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </refreshControl>
-                    <connections>
-                        <segue destination="KOH-x3-DUX" kind="show" identifier="showDestinations" id="ohR-zq-NCg"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3sn-7P-rDR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1065" y="468"/>
-        </scene>
         <!--DestinationVC-->
         <scene sceneID="Rao-O9-2ej">
             <objects>
@@ -348,12 +277,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lZ-xt-ZOH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="144.92753623188406" y="103.79464285714285"/>
+            <point key="canvasLocation" x="583" y="104"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="TjD-fG-BfH"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
