@@ -147,15 +147,17 @@ class ARView2: UIViewController {
             print("missing venue id")
             return
         }
-        
-        store.getDirections(venueId: vID, destinationId: destinationId, latitude: Float(self.destCoordinate.latitude), longitude: Float(self.destCoordinate.longitude), refresh: { directs in
-            self.trydirections = directs
-            print(self.trydirections)
-            DispatchQueue.main.async {
-                self.timeToDest.text = "Time to Destination: " + String(self.trydirections.time!.intValue) + " minutes"
+        if let currentLocation = sceneLocationView.sceneLocationManager.currentLocation  {
+                
+            store.getDirections(venueId: vID, destinationId: destinationId, latitude: Float(currentLocation.coordinate.latitude), longitude: Float(currentLocation.coordinate.longitude), refresh: { directs in
+                self.trydirections = directs
+                print(self.trydirections)
+                DispatchQueue.main.async {
+                    self.timeToDest.text = "Time to Destination: " + String(self.trydirections.time!.intValue) + " minutes"
+                }
+            }) {
+               
             }
-        }) {
-           
         }
         print("timer called")
     }

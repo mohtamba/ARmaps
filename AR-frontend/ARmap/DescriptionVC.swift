@@ -14,10 +14,11 @@ class DescriptionVC: UIViewController, CLLocationManagerDelegate{
     var dest: Location?
     var venueId: Int?
     var directions: [[String: Any]]?
+    var trydirections = Directions()
     let locationManager = CLLocationManager()
     var destCoordinate = CLLocationCoordinate2D()
-    
-    
+    var refreshControl = UIRefreshControl()
+
     
     @IBOutlet weak var destinationName: UILabel!
     
@@ -47,72 +48,58 @@ class DescriptionVC: UIViewController, CLLocationManagerDelegate{
         destinationDescription.text = dest?.description
         destinationDescription.sizeToFit()
         
-
-        
         // Do any additional setup after loading the view.
 
         locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+
         locationManager.startUpdatingLocation()
         
-        /*AR setup */
-        //let destCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat!), longitude: CLLocationDegrees(lon!))
+        refresh()
 
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "api.armaps.net"
-        components.path = "/api/venues/" +  String(venueId ?? 0) + "/destinations/" + String(dest?.id ?? 0) + "/directions/"
-        components.queryItems = [
-            URLQueryItem(name: "lat", value: String(self.destCoordinate.latitude)),
-            URLQueryItem(name: "lon", value: String(self.destCoordinate.longitude))
-        ]
-        guard let apiUrl = components.url else { return  }
-        print(apiUrl)
-        var request = URLRequest(url: apiUrl)
-
-        request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) {
-            (data, response, err) in
-            guard let data = data, err == nil else {
-                print("getDestinations: NETWORKING ERROR")
-                return
-            }
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                print("getDestinations: HTTP STATUS: \(httpStatus.statusCode)")
-                return
-            }
-            //let jsonObj = try? JSONSerialization.jsonObject(with: data, options: [])
-            guard let jsonObj = try? JSONSerialization.jsonObject(with: data) as? [String:Any] else {
-                print("getDestinations: failed JSON deserialization")
-                return
-            }
-            print(data)
-            var directions = Directions()
-            //let venuesReceived = jsonObj["data"] as ? [String: Any]
-            let directionjson = jsonObj
-            print(directionjson)
-            //TODO: depend on what venues' names are in the tables
-            if (directionjson.count == Directions.nFields + 1) {
-                directions = Directions(data:(directionjson["data"] as! [[String:Any]]),
-                                        distance: (directionjson["distance"] as! NSNumber),
-                                        time: (directionjson["time_estimate"] as! NSNumber))
-            } else {
-                print("getDest: Received unexpected number of fields: \(String(describing: directionjson.count)).")
-            }
-            DispatchQueue.main.async {
-                self.destinationTime.text = "Time to Destination: " + String(directions.time!.intValue) + " minutes"
-                self.destinationDistance.text = "Distance to Destination: " + String(directions.distance!.intValue) + " miles"
-                self.destinationTime.sizeToFit()
-                self.destinationDistance.sizeToFit()
-                self.directions = directions.data
-
-                
-            }
-
-        }.resume()
-        
+    }
     
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refresh()
+    }
+        
+    private func refresh() {
+        
+        let store = DirectionStore()
+        
+        guard let destinationId = dest?.id else {
+            print("missing destination id")
+            return
+        }
+        guard let vID = venueId else {
+            print("missing venue id")
+            return
+        }
+        // gets authorization status from manager
+        let status = locationManager.authorizationStatus
+        var currentLocation: CLLocation!
 
+        if status == CLAuthorizationStatus.authorizedAlways || status == CLAuthorizationStatus.authorizedWhenInUse {
+            currentLocation = locationManager.location
+                        
+            
+            store.getDirections(venueId: vID, destinationId: destinationId, latitude: Float(currentLocation.coordinate.latitude), longitude: Float(currentLocation.coordinate.longitude), refresh: { directs in
+                self.trydirections = directs
+                print(self.trydirections)
+                DispatchQueue.main.async {
+                    self.destinationTime.text = "Time to Destination: " + String(self.trydirections.time!.intValue) + " minutes"
+                    self.destinationDistance.text = "Distance to Destination: " + String(self.trydirections.distance!.intValue) + " miles"
+                    self.destinationTime.sizeToFit()
+                    self.destinationDistance.sizeToFit()
+                    self.directions = self.trydirections.data
+                }
+            }) {
+                DispatchQueue.main.async {
+                    // stop the refreshing animation upon completion:
+                    self.refreshControl.endRefreshing()
+                }
+            }
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
