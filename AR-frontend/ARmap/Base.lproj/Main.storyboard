@@ -237,17 +237,62 @@
                     <view key="view" contentMode="scaleToFill" id="Wqg-eH-BYz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmW-PF-DBS">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="753"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jqc-sE-20c">
+                                <rect key="frame" x="0.0" y="746" width="414" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXh-SX-VnN">
+                                        <rect key="frame" x="186" y="15" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7V-I9-X4r">
+                                        <rect key="frame" x="186" y="64" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="U7V-I9-X4r" secondAttribute="bottom" constant="15" id="IoI-fP-ATT"/>
+                                    <constraint firstItem="SXh-SX-VnN" firstAttribute="top" secondItem="Jqc-sE-20c" secondAttribute="top" constant="15" id="L2S-Zr-zW6"/>
+                                    <constraint firstAttribute="height" constant="100" id="mqB-vp-Bbi"/>
+                                    <constraint firstItem="U7V-I9-X4r" firstAttribute="centerX" secondItem="Jqc-sE-20c" secondAttribute="centerX" id="p6n-WT-hlN"/>
+                                    <constraint firstItem="SXh-SX-VnN" firstAttribute="centerX" secondItem="Jqc-sE-20c" secondAttribute="centerX" id="xIH-Gc-757"/>
+                                    <constraint firstItem="U7V-I9-X4r" firstAttribute="leading" secondItem="SXh-SX-VnN" secondAttribute="leading" id="zDs-GB-Z7A"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="DEC-fM-Sje"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Jqc-sE-20c" secondAttribute="bottom" constant="-4" id="BsV-Mh-spW"/>
+                            <constraint firstItem="bmW-PF-DBS" firstAttribute="top" secondItem="DEC-fM-Sje" secondAttribute="top" id="FAf-V2-KJp"/>
+                            <constraint firstItem="Jqc-sE-20c" firstAttribute="leading" secondItem="DEC-fM-Sje" secondAttribute="leading" id="SSl-vf-Deh"/>
+                            <constraint firstItem="Jqc-sE-20c" firstAttribute="top" secondItem="bmW-PF-DBS" secondAttribute="bottom" constant="-7" id="aoA-0j-dNr"/>
+                            <constraint firstItem="Jqc-sE-20c" firstAttribute="trailing" secondItem="DEC-fM-Sje" secondAttribute="trailing" id="bVt-5l-cgL"/>
+                            <constraint firstItem="bmW-PF-DBS" firstAttribute="trailing" secondItem="DEC-fM-Sje" secondAttribute="trailing" id="dOf-Jv-xOg"/>
+                            <constraint firstItem="bmW-PF-DBS" firstAttribute="leading" secondItem="DEC-fM-Sje" secondAttribute="leading" id="udB-fh-c1B"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CrQ-sS-ues"/>
                     <connections>
+                        <outlet property="ContentView" destination="bmW-PF-DBS" id="5Aj-5w-jYh"/>
+                        <outlet property="LabelView" destination="Jqc-sE-20c" id="18M-wm-9Ub"/>
+                        <outlet property="showDestName" destination="SXh-SX-VnN" id="k4s-Fc-13m"/>
+                        <outlet property="timeToDest" destination="U7V-I9-X4r" id="6NA-yu-rkk"/>
                         <segue destination="8Zq-dt-BxF" kind="show" identifier="viewNearby" id="gxR-nz-4UP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9YG-Zd-VcO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3457" y="82"/>
+            <point key="canvasLocation" x="3456.521739130435" y="81.696428571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S2l-49-VKs">
@@ -269,10 +314,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EYl-7x-MEN"/>
+        <segue reference="mg8-A3-iB1"/>
         <segue reference="gxR-nz-4UP"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

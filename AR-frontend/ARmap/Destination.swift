@@ -1,5 +1,3 @@
-
-
 struct Destination{
     var destination_name: String?
     var distance: String?
