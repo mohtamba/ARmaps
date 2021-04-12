@@ -225,7 +225,6 @@
                                         <connections>
                                             <outlet property="distance1" destination="y92-CE-xBF" id="JHv-vO-qwD"/>
                                             <outlet property="name_venue1" destination="hO3-pi-K4w" id="CA3-yr-Him"/>
-                                            <segue destination="KOH-x3-DUX" kind="show" identifier="u1" id="TjD-fG-BfH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -273,11 +272,12 @@
                         <outlet property="mysegment" destination="96f-ct-heQ" id="htd-nW-hEZ"/>
                         <outlet property="mytable" destination="AVX-bB-lwO" id="OLe-4T-bd3"/>
                         <outlet property="searchBar" destination="rBA-Pp-fEL" id="WFk-wU-2ki"/>
+                        <segue destination="KOH-x3-DUX" kind="show" identifier="u1" id="QRm-DA-0oj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lZ-xt-ZOH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="583" y="104"/>
+            <point key="canvasLocation" x="854" y="82"/>
         </scene>
     </scenes>
     <resources>
