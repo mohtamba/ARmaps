@@ -174,7 +174,7 @@ class Attempt: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         case 1:
             let venue_key = zero_to_five[indexPath.section]
-            let vee = venue_dictionary[venue_key]
+            let vee = venue_dictionary2[venue_key]
             selectedVenue = vee![indexPath.row]
             tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         default:
