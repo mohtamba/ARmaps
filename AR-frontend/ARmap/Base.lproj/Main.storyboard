@@ -314,6 +314,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="mg8-A3-iB1"/>
         <segue reference="gxR-nz-4UP"/>
     </inferredMetricsTieBreakers>
     <resources>
