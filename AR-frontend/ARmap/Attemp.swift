@@ -1,5 +1,6 @@
 import UIKit
 import Foundation
+import CoreLocation //added
 class Attempt: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
     
     
@@ -13,6 +14,8 @@ class Attempt: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     
     
     //Old code
+    var locationManager = CLLocationManager() //added
+    var lati = 0.0, longi = 0.0
     var venue_dictionary = [String: [Location]]()
     var selectedVenue = Location()
     var try1 = [Location]()
@@ -42,6 +45,20 @@ class Attempt: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         //fill in the venue dictionary
         refreshControl.addTarget(self, action: #selector(Attempt.handleRefresh(_:)), for: UIControl.Event.valueChanged)
         filtered_data = try1
+        //added
+        locationManager.requestWhenInUseAuthorization()
+        var currentLoc: CLLocation!
+        if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+        CLLocationManager.authorizationStatus() == .authorizedAlways) {
+           currentLoc = locationManager.location
+            print("hihi")
+            lati = currentLoc.coordinate.latitude
+            longi = currentLoc.coordinate.longitude
+           print(currentLoc.coordinate.latitude)
+           print(currentLoc.coordinate.longitude)
+        }
+        //last line added
+        
         refreshTimeline()
         searchBar.delegate = self
         self.mytable.dataSource = self
@@ -94,7 +111,10 @@ class Attempt: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     
     private func refreshTimeline() {
         var store = LocationStore()
-        store.getVenues(refresh: { venues in
+        
+        
+        
+        store.getVenuesdistance(lati: lati,longi: longi, refresh: { venues in
             self.try1 = venues
             self.filtered_data = venues
             DispatchQueue.main.async {

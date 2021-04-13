@@ -24,6 +24,8 @@
 	<string>Allow access to camera</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow access to current location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Allow access to current location</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

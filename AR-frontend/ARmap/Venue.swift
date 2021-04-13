@@ -29,6 +29,7 @@ struct Location {
     var id: Int?
     //add geodata afterwards
     static let nFields = 7
+    static let n1Fields = 8
 }
 /*Ideas from the apple instruction page
   To create an extension to the Venue model and add an initializer that takes
