@@ -12,6 +12,8 @@
 		1189CC0825F64BB50094C810 /* DestinationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1189CC0725F64BB50094C810 /* DestinationTableCell.swift */; };
 		118F0DC625FDB70E00DDAB10 /* DescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118F0DC525FDB70E00DDAB10 /* DescriptionVC.swift */; };
 		1A23ED1F79CAAF41FC26F653 /* Pods_ARmap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1A0EE82D9E18674389336B /* Pods_ARmap.framework */; };
+		37348DCD261003B00053093B /* Attemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37348DCC261003B00053093B /* Attemp.swift */; };
+		37C2352F26103D3C008B1965 /* cell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2352E26103D3C008B1965 /* cell1.swift */; };
 		37CA791525EEDA800031184D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CA791425EEDA800031184D /* AppDelegate.swift */; };
 		37CA791725EEDA800031184D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CA791625EEDA800031184D /* SceneDelegate.swift */; };
 		37CA791C25EEDA800031184D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CA791A25EEDA800031184D /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 		1189CC0725F64BB50094C810 /* DestinationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationTableCell.swift; sourceTree = "<group>"; };
 		118F0DC525FDB70E00DDAB10 /* DescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionVC.swift; sourceTree = "<group>"; };
 		2FD5D90A41EC8008F0F01762 /* Pods-ARmap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARmap.debug.xcconfig"; path = "Target Support Files/Pods-ARmap/Pods-ARmap.debug.xcconfig"; sourceTree = "<group>"; };
+		37348DCC261003B00053093B /* Attemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attemp.swift; sourceTree = "<group>"; };
+		37C2352E26103D3C008B1965 /* cell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cell1.swift; sourceTree = "<group>"; };
 		37CA791125EEDA800031184D /* ARmap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARmap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CA791425EEDA800031184D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37CA791625EEDA800031184D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,10 +97,12 @@
 		37CA791325EEDA800031184D /* ARmap */ = {
 			isa = PBXGroup;
 			children = (
+				37C2352E26103D3C008B1965 /* cell1.swift */,
+				37348DCC261003B00053093B /* Attemp.swift */,
+				110302C225F58292005B9558 /* DestinationVC.swift */,
+				37F584C325EFE1D600315182 /* Welcome.swift */,
 				37F584CC25EFFE3600315182 /* VenueTableCell.swift */,
 				1189CC0725F64BB50094C810 /* DestinationTableCell.swift */,
-				37F584C325EFE1D600315182 /* Welcome.swift */,
-				110302C225F58292005B9558 /* DestinationVC.swift */,
 				37F584BF25EFD7AC00315182 /* Venue.swift */,
 				37CA791425EEDA800031184D /* AppDelegate.swift */,
 				9CEA091525FD718400229EE0 /* ARView.swift */,
@@ -265,11 +271,13 @@
 				37F584C825EFE8D200315182 /* VenueStore.swift in Sources */,
 				110302C325F58292005B9558 /* DestinationVC.swift in Sources */,
 				37F584CD25EFFE3600315182 /* VenueTableCell.swift in Sources */,
+				37348DCD261003B00053093B /* Attemp.swift in Sources */,
 				1189CC0825F64BB50094C810 /* DestinationTableCell.swift in Sources */,
 				37F584C425EFE1D600315182 /* Welcome.swift in Sources */,
 				9CEA091625FD718400229EE0 /* ARView.swift in Sources */,
 				37F584C025EFD7AC00315182 /* Venue.swift in Sources */,
 				37CA791525EEDA800031184D /* AppDelegate.swift in Sources */,
+				37C2352F26103D3C008B1965 /* cell1.swift in Sources */,
 				9C85128B260E3808007C9124 /* Waypoints.swift in Sources */,
 				9E14442C2623542F000FB788 /* DirectionsStore.swift in Sources */,
 				37CA791725EEDA800031184D /* SceneDelegate.swift in Sources */,
@@ -424,13 +432,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9QBAHU4TXU;
+				DEVELOPMENT_TEAM = W9FK6RS2Y8;
 				INFOPLIST_FILE = ARmap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.katevc;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.mtamba;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -444,13 +452,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9QBAHU4TXU;
+				DEVELOPMENT_TEAM = W9FK6RS2Y8;
 				INFOPLIST_FILE = ARmap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.katevc;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.mtamba;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -41,7 +41,7 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         
         for many in try1{
-            let spot_key = String(many.name!.prefix(venueId))
+            let spot_key = String(many.name.prefix(venueId))
             if var dest_values = destination_dictionary[spot_key]{
                 dest_values.append(many)
                 destination_dictionary[spot_key] = dest_values
@@ -79,7 +79,7 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             DispatchQueue.main.async {
                 self.destination_dictionary.removeAll()
                 for many in self.try1 {
-                    let spot_key = String(many.name!.prefix(venueId))
+                    let spot_key = String(many.name.prefix(venueId))
                     if var destination_values = self.destination_dictionary[spot_key]{
                         destination_values.append(many)
                         self.destination_dictionary[spot_key] = destination_values

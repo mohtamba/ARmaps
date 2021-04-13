@@ -13,22 +13,21 @@ class Welcome: UITableViewController{
     var selectedVenue = Location()
     var try1 = [Location]()
     var A_to_Z = [String]()
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         //return 1
         return A_to_Z.count
     }
     override func viewDidLoad() {
-        //initialize_things()
         super.viewDidLoad()
         //fill in the venue dictionary
         refreshControl?.addTarget(self, action: #selector(Welcome.handleRefresh(_:)), for: UIControl.Event.valueChanged)
         
         refreshTimeline()
         print("after refresh")
-        print(try1)
+        //print(try1)
         for many in try1{
-            let spot_key = String(many.name!.prefix(1))
+            let spot_key = String(many.name.prefix(1))
             if var venue_values = venue_dictionary[spot_key]{
                 venue_values.append(many)
                 venue_dictionary[spot_key] = venue_values
@@ -36,7 +35,7 @@ class Welcome: UITableViewController{
                 venue_dictionary[spot_key] = [many]
             }
         }
-        //sort the dictionary keys in alphabetical order
+        
         A_to_Z = [String] (venue_dictionary.keys)
         A_to_Z = A_to_Z.sorted(by: { $0 < $1 })
         //self.tableView.reloadData()
@@ -45,18 +44,16 @@ class Welcome: UITableViewController{
     }
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshTimeline()
-        //print("after handle")
-        //print(try1)
     }
     
     private func refreshTimeline() {
-        let store = LocationStore()
+        var store = LocationStore()
         store.getVenues(refresh: { venues in
             self.try1 = venues
             DispatchQueue.main.async {
                 self.venue_dictionary.removeAll()
                 for many in self.try1{
-                    let spot_key = String(many.name!.prefix(1))
+                    let spot_key = String(many.name.prefix(1))
                     if var venue_values = self.venue_dictionary[spot_key]{
                         venue_values.append(many)
                         self.venue_dictionary[spot_key] = venue_values
