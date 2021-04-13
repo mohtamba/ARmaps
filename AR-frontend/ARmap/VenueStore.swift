@@ -109,34 +109,7 @@ struct LocationStore {
             }
             task.resume()
         }
-//    func postChatt(_ chatt: Venue) {
-//        let jsonObj = ["username": chatt.username,
-//                               "message": chatt.message,
-//                               "audio": chatt.audio]
-//        guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonObj) else {
-//            print("postChatt: jsonData serialization error")
-//            return
-//        }
-//
-//        guard let apiUrl = URL(string: serverUrl+"postchatt/") else {
-//            print("postChatt: Bad URL")
-//            return
-//        }
-//
-//        var request = URLRequest(url: apiUrl)
-//        request.httpMethod = "POST"
-//        request.httpBody = jsonData
-//
-//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//            guard let _ = data, error == nil else {
-//                print("postChatt: NETWORKING ERROR")
-//                return
-//            }
-//            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-//                print("postChatt: HTTP STATUS: \(httpStatus.statusCode)")
-//                return
-//            }
-//        }
-//        task.resume()
-//    }
+    
+    
+   
 }
