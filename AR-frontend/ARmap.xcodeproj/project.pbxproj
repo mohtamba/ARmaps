@@ -29,11 +29,8 @@
 		9CA6B7B7261BB484004D31B3 /* pin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CA6B7B6261BB484004D31B3 /* pin2.png */; };
 		9CEA091625FD718400229EE0 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA091525FD718400229EE0 /* ARView.swift */; };
 		9CEA097F25FD96A900229EE0 /* ARView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA097E25FD96A900229EE0 /* ARView2.swift */; };
-
 		9CFCD7B926235A12006574AE /* pinfuturewaypoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CFCD7B826235A12006574AE /* pinfuturewaypoint.png */; };
-
 		9E14442C2623542F000FB788 /* DirectionsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E14442B2623542F000FB788 /* DirectionsStore.swift */; };
-
 		9E5EAC1D25FE2FFE00DDA410 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E5EAC1C25FE2FFE00DDA410 /* pin.png */; };
 /* End PBXBuildFile section */
 
@@ -64,11 +61,8 @@
 		9CA6B7B6261BB484004D31B3 /* pin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin2.png; sourceTree = "<group>"; };
 		9CEA091525FD718400229EE0 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		9CEA097E25FD96A900229EE0 /* ARView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView2.swift; sourceTree = "<group>"; };
-
 		9CFCD7B826235A12006574AE /* pinfuturewaypoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinfuturewaypoint.png; sourceTree = "<group>"; };
-
 		9E14442B2623542F000FB788 /* DirectionsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsStore.swift; sourceTree = "<group>"; };
-
 		9E5EAC1C25FE2FFE00DDA410 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -442,13 +436,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z7DWB62N35;
+				DEVELOPMENT_TEAM = WYKPH2VC79;
 				INFOPLIST_FILE = ARmap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.gigigigigi;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.blazecla;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -462,13 +456,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z7DWB62N35;
+				DEVELOPMENT_TEAM = WYKPH2VC79;
 				INFOPLIST_FILE = ARmap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.gigigigigi;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.blazecla;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

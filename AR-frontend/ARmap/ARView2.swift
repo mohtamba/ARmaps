@@ -116,7 +116,7 @@ class ARView2: UIViewController {
         let waypointLoc = CLLocation(coordinate: self.waypoint1, altitude: location.altitude)
         let waypointdistance = location.distance(from: waypointLoc)
         
-        print(waypoint1)
+        //print(waypoint1)
         
         if waypointdistance < 10 {
             print("waypoint reached")
