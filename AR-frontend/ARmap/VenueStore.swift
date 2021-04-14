@@ -118,6 +118,58 @@ struct LocationStore {
             }
             task.resume()
         }
+    func get_destination_by_Venues_distance(venueId: Int,
+                                            lati: Double,
+                                            longi: Double,
+                                   refresh: @escaping ([Location]) -> (),
+                                   completion: @escaping () -> ()) {
+        guard let apiUrl = URL(string: serverUrl+"api/venues/"+String(venueId)+"/destinations?lat="+String(lati)+"&lon=" +
+        String(longi)) else {
+                print("getDestinations: Bad URL")
+                return
+            }
+            print("hihihihi ", apiUrl)
+            var request = URLRequest(url: apiUrl)
+            request.httpMethod = "GET"
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                defer { completion() }
+                guard let data = data, error == nil else {
+                    print("getDestinations: NETWORKING ERROR")
+                    return
+                }
+                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                    print("getDestinations: HTTP STATUS: \(httpStatus.statusCode)")
+                    return
+                }
+                //let jsonObj = try? JSONSerialization.jsonObject(with: data, options: [])
+                guard let jsonObj = try? JSONSerialization.jsonObject(with: data) as? [String:Any] else {
+                    print("getDestinations: failed JSON deserialization")
+                    return
+                }
+                var destinations = [Location]()
+                //let venuesReceived = jsonObj["data"] as ? [String: Any]
+                let destinationsReceived = jsonObj["data"] as? [[String:Any]] ?? []  //TODO: depend on what venues' names are in the tables
+                for destEntry in destinationsReceived {
+                    /*NOTE - added 1 b/c destinations API actually has venue_id stored too */
+                    if (destEntry.count == Location.n1Fields+1) {
+                        destinations += [Location(name: (destEntry["name"] as! String),
+                                         description: (destEntry["description"] as! String),
+                                         imageUrl: (destEntry["image_url"] as! String),
+                                         lat: (destEntry["latitude"] as! NSNumber).floatValue,
+                                         lon:(destEntry["longitude"] as! NSNumber).floatValue,
+                                         altitude:(destEntry["altitude"] as! NSNumber).floatValue,
+                                         distance: (destEntry["distance"] as! NSNumber).doubleValue,
+                                         id:(destEntry["destination_id"] as! Int)
+                                             )]
+                    } else {
+                        print("getDest: Received unexpected number of fields: \(destEntry.count).")
+                    }
+                }
+                refresh(destinations)
+            }
+            task.resume()
+        }
     func get_destination_by_Venues(venueId: Int,
                                    refresh: @escaping ([Location]) -> (),
                                    completion: @escaping () -> ()) {
