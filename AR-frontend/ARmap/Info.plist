@@ -4,6 +4,11 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,6 +27,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow access to camera</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>ARmaps needs your location to provide mapping services. Allow location access for use.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow access to current location</string>
 	<key>UIApplicationSceneManifest</key>

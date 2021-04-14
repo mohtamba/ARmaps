@@ -18,16 +18,18 @@ struct LocPropWrapper {
     }
 }
 struct Location {
-    var name: String?
+    var name = ""
     //var distance: String?
     var description: String?
     @LocPropWrapper var imageUrl: String? = nil
     var lat: Float?
     var lon: Float?
     var altitude: Float?
+    var distance: Double?
     var id: Int?
     //add geodata afterwards
     static let nFields = 7
+    static let n1Fields = 8
 }
 
 struct Directions {
