@@ -22,6 +22,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow access to camera</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>ARmaps needs your location to provide mapping services. Allow location access for use.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow access to current location</string>
 	<key>UIApplicationSceneManifest</key>
@@ -59,8 +61,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>ARmaps needs your location to provide mapping services. Allow location access for use.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

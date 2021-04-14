@@ -29,6 +29,7 @@ struct Location {
     var id: Int?
     //add geodata afterwards
     static let nFields = 7
+    static let n1Fields = 8
 }
 
 struct Directions {
