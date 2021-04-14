@@ -292,6 +292,8 @@ class Attempt: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? DestinationVC {
             dest.venue = selectedVenue
+            dest.lati = lati
+            dest.longi = longi
         }
     }
 //    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
