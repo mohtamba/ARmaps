@@ -17,6 +17,7 @@ class ARView2: UIViewController {
     var venueid: Int?
     var destid: Int?
     var directions: [[String: Any]]?
+    var new_directions: [[String: Any]]?
     let locationManager = CLLocationManager()
     var destCoordinate = CLLocationCoordinate2D()
     let refreshControl = UIRefreshControl()
@@ -27,7 +28,7 @@ class ARView2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl.addTarget(self, action: #selector(DestinationVC.handleRefresh(_:)), for: UIControl.Event.valueChanged)
-
+        print(self.directions)
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
         //altitude = 60
@@ -78,6 +79,38 @@ class ARView2: UIViewController {
     }
 
     func monitor_distance(location: CLLocation) {
+        
+        let waypointLoc = CLLocation(coordinate: self.waypoint1, altitude: location.altitude)
+        let waypointdistance = location.distance(from: waypointLoc)
+        
+        print(waypoint1)
+        
+        if waypointdistance < 10 {
+            print("waypoint reached")
+            //arrivalAlert(message: "Head to next waypoint", entered: true)
+            
+            //sceneLocationView.removeAllNodes()
+            //let new_directions
+            //let notfirst = DropFirstSequence(self.directions!, dropping: 1)
+            //for point in notfirst{
+                //new_directions!.append(point)
+           // }
+            
+            //self.directions = new_directions
+//            let point_1 = self.directions![1]
+//            let lat_val = point_1["lat"] ?? 0
+//            let lon_val = point_1["lon"] ?? 0
+//            let latitude: CLLocationDegrees = lat_val as! CLLocationDegrees
+//            let longitude: CLLocationDegrees = lon_val as! CLLocationDegrees
+//
+//            var pointCoord = CLLocationCoordinate2D()
+//            pointCoord = CLLocationCoordinate2D(latitude: latitude, longitude: longitude);
+//
+//            self.waypoint1 = pointCoord
+            updateWaypoints()
+              //getDirectionWaypoints()
+            
+        }
 
         let destLocation = CLLocation(coordinate: destCoordinate, altitude: location.altitude)
         let distance = location.distance(from: destLocation)
@@ -87,14 +120,7 @@ class ARView2: UIViewController {
             locationManager.stopUpdatingLocation()
         }
         
-        let waypointLoc = CLLocation(coordinate: self.waypoint1, altitude: location.altitude)
-        let waypointdistance = location.distance(from: waypointLoc)
         
-        if waypointdistance < 10 {
-            print("waypoint reached")
-            arrivalAlert(message: "Head to next waypoint", entered: true)
-            updateWaypoints()
-        }
         
     }
     
@@ -117,15 +143,22 @@ class ARView2: UIViewController {
     }
     
     func getDirectionWaypoints() {
+        print("getting waypoints")
+        
+        
         let point_1 = self.directions![0]
         let lat_val = point_1["lat"] ?? 0
         let lon_val = point_1["lon"] ?? 0
+        
+        
     
         let latitude: CLLocationDegrees = lat_val as! CLLocationDegrees
         let longitude: CLLocationDegrees = lon_val as! CLLocationDegrees
     
         var pointCoord = CLLocationCoordinate2D()
         pointCoord = CLLocationCoordinate2D(latitude: latitude, longitude: longitude);
+        
+        self.waypoint1 = pointCoord
     
         let location2 = CLLocation(coordinate: pointCoord, altitude: Double(altitude!))
 
@@ -138,7 +171,7 @@ class ARView2: UIViewController {
         for point in notfirst{
         
         //var pointCoordinate = CLLocationCoordinate2D()
-            print(point)
+            //print(point)
             let lat_val = point["lat"] ?? 0
             let lon_val = point["lon"] ?? 0
         

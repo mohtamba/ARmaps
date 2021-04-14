@@ -115,6 +115,7 @@ class DescriptionVC: UIViewController, CLLocationManagerDelegate{
             dest.altitude = self.dest?.altitude
             dest.destid = self.dest?.id
             dest.directions = self.directions
+            dest.venueid = self.venueId
         }
     }
     
