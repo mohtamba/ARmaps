@@ -140,8 +140,8 @@ class DestinationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return 0;
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let dest_key = A_to_Z[indexPath.section]
-        let vee = destination_dictionary[dest_key]
+        let dest_key = zero_to_five[indexPath.section]
+        let vee = venue_dictionary2[dest_key]
         selectedDestination = vee![indexPath.row]
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         performSegue(withIdentifier: "showDescription", sender: self)
