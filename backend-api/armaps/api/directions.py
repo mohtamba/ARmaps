@@ -200,12 +200,15 @@ def path_correction(data, user_coords):
     second_coords = (data[1]["lat"], data[1]["lon"])
     user_second_dist = geopy.distance.distance(user_coords, second_coords).miles
 
-    # Calculate distance from first waypoint to second waypoint
+    # Calculate distance from user to first waypoint
     first_coords = (data[0]["lat"], data[0]["lon"])
+    user_first_dist = geopy.distance.distance(user_coords, first_coords).km
+
+    # Calculate distance from first waypoint to second waypoint
     first_second_dist = geopy.distance.distance(first_coords, second_coords).miles
 
     # Determine if path correction is applicable
-    if user_second_dist < first_second_dist:
+    if user_second_dist < first_second_dist or user_first_dist < 0.01:
         # Delete first element of list so that user doesn't backtrack
         return data[1:]
     else:
