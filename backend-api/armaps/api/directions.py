@@ -258,7 +258,7 @@ def get_directions(venueid_url_slug, destid_url_slug):
     starting_waypoint = graph.insert_user_location(lat, lon)
     data = graph.get_path(starting_waypoint, destid_url_slug)
     correct_data = path_correction(data, (lat, lon))
-    data =  get_bearings(data)
+    correct_data =  get_bearings(correct_data)
 
     # Calculate distance to destination and time estimate, given path
     distance_to_dest, time_estimate = calculate_vars(correct_data, lat, lon)
