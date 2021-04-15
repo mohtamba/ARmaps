@@ -11,6 +11,7 @@ import armaps
 import sys
 import dijkstra
 import geopy.distance
+import math
 
 
 class Graph:
@@ -215,6 +216,22 @@ def path_correction(data, user_coords):
         # No path correction needed
         return data
 
+def get_bearings(data):
+    num_points = len(data)
+    idx = 0
+    while idx < num_points-1:
+        alat = data[idx]['lat']
+        alon = data[idx]['lon']
+        blat = data[idx+1]['lat']
+        blon = data[idx+1]['lon']
+        dLon = blon-alon
+        X = math.cos(blat) * math.sin(dLon)
+        Y = math.cos(alat) * math.sin(blat) - math.sin(alat) * math.cos(blat) * math.cos(dLon)
+        bearing = math.atan2(X,Y)
+        data[idx]['bearing'] = bearing
+
+    data[-1]['bearing'] = -1
+    return data
 
 @armaps.app.route('/api/venues/<int:venueid_url_slug>/destinations/<int:destid_url_slug>/directions/',
                   methods=["GET"])
@@ -241,6 +258,7 @@ def get_directions(venueid_url_slug, destid_url_slug):
     starting_waypoint = graph.insert_user_location(lat, lon)
     data = graph.get_path(starting_waypoint, destid_url_slug)
     correct_data = path_correction(data, (lat, lon))
+    data =  get_bearings(data)
 
     # Calculate distance to destination and time estimate, given path
     distance_to_dest, time_estimate = calculate_vars(correct_data, lat, lon)
