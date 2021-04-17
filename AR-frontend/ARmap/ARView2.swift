@@ -151,6 +151,8 @@ class ARView2: UIViewController {
         if distance < 10 {
             arrivalAlert(message: "You've reached your destination", entered: true)
             locationManager.stopUpdatingLocation()
+            sceneLocationView.removeAllNodes()
+            
         }
         
         
