@@ -8,6 +8,7 @@
 import Foundation
 import ARCL
 import CoreLocation
+import UIKit
 
 class ARView2: UIViewController {
     var sceneLocationView = SceneLocationView()
@@ -185,6 +186,7 @@ class ARView2: UIViewController {
         let point_1 = self.directions![0]
         let lat_val = point_1["lat"] ?? 0
         let lon_val = point_1["lon"] ?? 0
+        let bearing = point_1["bearing"] ?? 0
         
         
     
@@ -198,7 +200,8 @@ class ARView2: UIViewController {
     
         let location2 = CLLocation(coordinate: pointCoord, altitude: Double(altitude!))
 
-        let image2 = UIImage(named: "pin2")!
+        let unrotated = UIImage(named: "arrow")!
+        let image2 = unrotated.rotate(radians: bearing as! CGFloat)
 
         let waypoint = LocationAnnotationNode(location: location2, image: image2)
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: waypoint)
@@ -210,6 +213,7 @@ class ARView2: UIViewController {
             //print(point)
             let lat_val = point["lat"] ?? 0
             let lon_val = point["lon"] ?? 0
+            let bearing = point_1["bearing"] ?? 0
         
             let latitude: CLLocationDegrees = lat_val as! CLLocationDegrees
             let longitude: CLLocationDegrees = lon_val as! CLLocationDegrees
@@ -219,7 +223,8 @@ class ARView2: UIViewController {
         
             let location2 = CLLocation(coordinate: pointCoord, altitude: Double(altitude!))
     
-            let image2 = UIImage(named: "pinfuturewaypoint")!
+            let unrotated = UIImage(named: "arrow")!
+            let image2 = unrotated.rotate(radians: bearing as! CGFloat)
 
             let waypoint = LocationAnnotationNode(location: location2, image: image2)
             sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: waypoint)
@@ -352,5 +357,28 @@ extension UIViewController {
 extension ARView2: CLLocationManagerDelegate {
     func locationManager(_ manager:CLLocationManager, didUpdateLocations: [CLLocation]) {
         monitor_distance(location: didUpdateLocations[0])
+    }
+}
+
+extension UIImage {
+    func rotate(radians: CGFloat) -> UIImage {
+        let rotatedSize = CGRect(origin: .zero, size: size)
+            .applying(CGAffineTransform(rotationAngle: CGFloat(radians)))
+            .integral.size
+        UIGraphicsBeginImageContext(rotatedSize)
+        if let context = UIGraphicsGetCurrentContext() {
+            let origin = CGPoint(x: rotatedSize.width / 2.0,
+                                 y: rotatedSize.height / 2.0)
+            context.translateBy(x: origin.x, y: origin.y)
+            context.rotate(by: radians)
+            draw(in: CGRect(x: -origin.y, y: -origin.x,
+                            width: size.width, height: size.height))
+            let rotatedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+
+            return rotatedImage ?? self
+        }
+
+        return self
     }
 }
