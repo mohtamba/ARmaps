@@ -200,7 +200,7 @@ class ARView2: UIViewController {
     
         let location2 = CLLocation(coordinate: pointCoord, altitude: Double(altitude!))
 
-        let unrotated = UIImage(named: "arrow")!
+        let unrotated = UIImage(named: "arrow1")!
         let image2 = unrotated.rotate(radians: bearing as! CGFloat)
 
         let waypoint = LocationAnnotationNode(location: location2, image: image2)
@@ -223,7 +223,7 @@ class ARView2: UIViewController {
         
             let location2 = CLLocation(coordinate: pointCoord, altitude: Double(altitude!))
     
-            let unrotated = UIImage(named: "arrow")!
+            let unrotated = UIImage(named: "arrow1")!
             let image2 = unrotated.rotate(radians: bearing as! CGFloat)
 
             let waypoint = LocationAnnotationNode(location: location2, image: image2)
