@@ -220,9 +220,9 @@ def get_bearings(data):
     num_points = len(data)
     idx = 0
     while idx < num_points-1:
-        alat = data[idx]['lat']
+        alat = math.radians(data[idx]['lat'])
         alon = data[idx]['lon']
-        blat = data[idx+1]['lat']
+        blat = math.radians(data[idx+1]['lat'])
         blon = data[idx+1]['lon']
         dLon = blon-alon
         X = math.cos(blat) * math.sin(dLon)
