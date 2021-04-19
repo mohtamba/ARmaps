@@ -206,14 +206,11 @@ class ARView2: UIViewController {
         let waypoint = LocationAnnotationNode(location: location2, image: image2)
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: waypoint)
     
-        let notfirst = DropFirstSequence(self.directions!, dropping: 1)
-        for point in notfirst{
+        for (_, point) in self.directions!.dropFirst().dropLast().enumerated() {
         
-        //var pointCoordinate = CLLocationCoordinate2D()
-            //print(point)
             let lat_val = point["lat"] ?? 0
             let lon_val = point["lon"] ?? 0
-            let bearing = point_1["bearing"] ?? 0
+            let bearing = point["bearing"] ?? 0
         
             let latitude: CLLocationDegrees = lat_val as! CLLocationDegrees
             let longitude: CLLocationDegrees = lon_val as! CLLocationDegrees
@@ -222,8 +219,8 @@ class ARView2: UIViewController {
             pointCoord = CLLocationCoordinate2D(latitude: latitude, longitude: longitude);
         
             let location2 = CLLocation(coordinate: pointCoord, altitude: Double(altitude!))
-    
-            let unrotated = UIImage(named: "arrow1")!
+            
+            let unrotated = UIImage(named: "arrow2")!
             let image2 = unrotated.rotate(radians: bearing as! CGFloat)
 
             let waypoint = LocationAnnotationNode(location: location2, image: image2)
@@ -302,7 +299,7 @@ class ARView2: UIViewController {
                 self.trydirections = directs
                 print(self.trydirections)
                 DispatchQueue.main.async {
-                    self.timeToDest.text = "Time to Destination: " + String(self.trydirections.time!.intValue) + " minutes"
+                    self.timeToDest.text = "Time to Destination: " + String(self.trydirections.time!.intValue + 1) + " minutes"
                 }
             }) {
                

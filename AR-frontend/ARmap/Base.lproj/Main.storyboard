@@ -246,13 +246,13 @@
                                 <rect key="frame" x="0.0" y="800" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXh-SX-VnN">
-                                        <rect key="frame" x="186" y="15" width="42" height="20.5"/>
+                                        <rect key="frame" x="81.5" y="10" width="251" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7V-I9-X4r">
-                                        <rect key="frame" x="186" y="64" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculating Time to Destination..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7V-I9-X4r">
+                                        <rect key="frame" x="81.5" y="40.5" width="251" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -260,11 +260,11 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="U7V-I9-X4r" secondAttribute="bottom" constant="15" id="IoI-fP-ATT"/>
-                                    <constraint firstItem="SXh-SX-VnN" firstAttribute="top" secondItem="Jqc-sE-20c" secondAttribute="top" constant="15" id="L2S-Zr-zW6"/>
+                                    <constraint firstItem="SXh-SX-VnN" firstAttribute="top" secondItem="Jqc-sE-20c" secondAttribute="top" constant="10" id="L2S-Zr-zW6"/>
                                     <constraint firstAttribute="height" constant="100" id="mqB-vp-Bbi"/>
                                     <constraint firstItem="U7V-I9-X4r" firstAttribute="centerX" secondItem="Jqc-sE-20c" secondAttribute="centerX" id="p6n-WT-hlN"/>
                                     <constraint firstItem="SXh-SX-VnN" firstAttribute="centerX" secondItem="Jqc-sE-20c" secondAttribute="centerX" id="xIH-Gc-757"/>
+                                    <constraint firstItem="U7V-I9-X4r" firstAttribute="top" secondItem="SXh-SX-VnN" secondAttribute="bottom" constant="10" id="xxq-Dc-dbv"/>
                                     <constraint firstItem="U7V-I9-X4r" firstAttribute="leading" secondItem="SXh-SX-VnN" secondAttribute="leading" id="zDs-GB-Z7A"/>
                                 </constraints>
                             </view>

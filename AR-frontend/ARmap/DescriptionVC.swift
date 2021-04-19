@@ -82,8 +82,8 @@ class DescriptionVC: UIViewController, CLLocationManagerDelegate {
             self.trydirections = directs
             print(self.trydirections)
             DispatchQueue.main.async {
-                self.destinationTime.text = "Time to Destination: " + String(self.trydirections.time!.intValue) + " minutes"
-                self.destinationDistance.text = "Distance to Destination: " + String(self.trydirections.distance!.intValue) + " miles"
+                self.destinationTime.text = "Time to Destination: " + String(self.trydirections.time!.intValue + 1) + " minutes"
+                self.destinationDistance.text = "Distance to Destination: " + String(self.trydirections.distance!.intValue + 1) + " miles"
                 self.destinationTime.sizeToFit()
                 self.destinationDistance.sizeToFit()
                 self.directions = self.trydirections.data
