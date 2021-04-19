@@ -13,7 +13,8 @@ def get_db():
             host=os.getenv('POSTGRES_HOST'),
             port=armaps.app.config['POSTGRESQL_DATABASE_PORT'],
             user=armaps.app.config['POSTGRESQL_DATABASE_USER'],
-            password=armaps.app.config['POSTGRESQL_DATABASE_PASSWORD'],
+            password=os.getenv('POSTGRESQL_DATABASE_PASSWORD'),
+            # password=armaps.app.config['POSTGRESQL_DATABASE_PASSWORD'],
             database=armaps.app.config['POSTGRESQL_DATABASE_DB'],
         )
         flask.g.db_cur = flask.g.db_con.cursor(

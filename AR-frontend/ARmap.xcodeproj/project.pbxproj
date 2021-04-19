@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		110302C325F58292005B9558 /* DestinationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110302C225F58292005B9558 /* DestinationVC.swift */; };
 		1142E1DB25F4873900B7AD8C /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1142E1DA25F4873900B7AD8C /* Destination.swift */; };
+		117BA028262B4819004E0AA5 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 117BA027262B4819004E0AA5 /* arrow.png */; };
+		117BA02B262B4894004E0AA5 /* arrow1.png in Resources */ = {isa = PBXBuildFile; fileRef = 117BA02A262B4894004E0AA5 /* arrow1.png */; };
 		1189CC0825F64BB50094C810 /* DestinationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1189CC0725F64BB50094C810 /* DestinationTableCell.swift */; };
 		118F0DC625FDB70E00DDAB10 /* DescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118F0DC525FDB70E00DDAB10 /* DescriptionVC.swift */; };
 		1A23ED1F79CAAF41FC26F653 /* Pods_ARmap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1A0EE82D9E18674389336B /* Pods_ARmap.framework */; };
@@ -24,6 +26,7 @@
 		37F584C425EFE1D600315182 /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F584C325EFE1D600315182 /* Welcome.swift */; };
 		37F584C825EFE8D200315182 /* VenueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F584C725EFE8D200315182 /* VenueStore.swift */; };
 		37F584CD25EFFE3600315182 /* VenueTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F584CC25EFFE3600315182 /* VenueTableCell.swift */; };
+		4A095D9C262CC3C300B5F8F5 /* arrow2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A095D9B262CC3C300B5F8F5 /* arrow2.png */; };
 		9C85128B260E3808007C9124 /* Waypoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C85128A260E3808007C9124 /* Waypoints.swift */; };
 		9C85129026163A3D007C9124 /* pinwaypoints.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C85128F26163A3D007C9124 /* pinwaypoints.png */; };
 		9CA6B7B7261BB484004D31B3 /* pin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CA6B7B6261BB484004D31B3 /* pin2.png */; };
@@ -37,6 +40,8 @@
 /* Begin PBXFileReference section */
 		110302C225F58292005B9558 /* DestinationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationVC.swift; sourceTree = "<group>"; };
 		1142E1DA25F4873900B7AD8C /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		117BA027262B4819004E0AA5 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		117BA02A262B4894004E0AA5 /* arrow1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow1.png; sourceTree = "<group>"; };
 		1189CC0725F64BB50094C810 /* DestinationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationTableCell.swift; sourceTree = "<group>"; };
 		118F0DC525FDB70E00DDAB10 /* DescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionVC.swift; sourceTree = "<group>"; };
 		2FD5D90A41EC8008F0F01762 /* Pods-ARmap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARmap.debug.xcconfig"; path = "Target Support Files/Pods-ARmap/Pods-ARmap.debug.xcconfig"; sourceTree = "<group>"; };
@@ -54,6 +59,7 @@
 		37F584C325EFE1D600315182 /* Welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
 		37F584C725EFE8D200315182 /* VenueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueStore.swift; sourceTree = "<group>"; };
 		37F584CC25EFFE3600315182 /* VenueTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueTableCell.swift; sourceTree = "<group>"; };
+		4A095D9B262CC3C300B5F8F5 /* arrow2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow2.png; sourceTree = "<group>"; };
 		5A1A0EE82D9E18674389336B /* Pods_ARmap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARmap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D7E1666CD82758A1135467 /* Pods-ARmap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARmap.release.xcconfig"; path = "Target Support Files/Pods-ARmap/Pods-ARmap.release.xcconfig"; sourceTree = "<group>"; };
 		9C85128A260E3808007C9124 /* Waypoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoints.swift; sourceTree = "<group>"; };
@@ -127,6 +133,9 @@
 		37CA792D25EEE5490031184D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				4A095D9B262CC3C300B5F8F5 /* arrow2.png */,
+				117BA027262B4819004E0AA5 /* arrow.png */,
+				117BA02A262B4894004E0AA5 /* arrow1.png */,
 				9CFCD7B826235A12006574AE /* pinfuturewaypoint.png */,
 				9CA6B7B6261BB484004D31B3 /* pin2.png */,
 				9E5EAC1C25FE2FFE00DDA410 /* pin.png */,
@@ -213,9 +222,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C85129026163A3D007C9124 /* pinwaypoints.png in Resources */,
+				117BA02B262B4894004E0AA5 /* arrow1.png in Resources */,
 				37CA792125EEDA830031184D /* LaunchScreen.storyboard in Resources */,
 				37CA791E25EEDA830031184D /* Assets.xcassets in Resources */,
 				37CA792B25EEE5400031184D /* screen-pic.jpg in Resources */,
+				4A095D9C262CC3C300B5F8F5 /* arrow2.png in Resources */,
+				117BA028262B4819004E0AA5 /* arrow.png in Resources */,
 				9E5EAC1D25FE2FFE00DDA410 /* pin.png in Resources */,
 				9CFCD7B926235A12006574AE /* pinfuturewaypoint.png in Resources */,
 				9CA6B7B7261BB484004D31B3 /* pin2.png in Resources */,
@@ -364,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -419,7 +431,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -436,13 +448,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WYKPH2VC79;
+				DEVELOPMENT_TEAM = N985FFVN3Q;
 				INFOPLIST_FILE = ARmap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.blazecla;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.nholbroo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -456,13 +468,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WYKPH2VC79;
+				DEVELOPMENT_TEAM = N985FFVN3Q;
 				INFOPLIST_FILE = ARmap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.blazecla;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.nholbroo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
