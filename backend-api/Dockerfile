@@ -13,7 +13,7 @@ RUN pip3 install -r requirements.txt
 
 COPY . /armaps
 
-# Uncomment for prod
+# Uncomment to deploy to prod
 #ENV POSTGRES_HOST=dev-armaps-database.cqrmtk2jubig.us-east-1.rds.amazonaws.com
 #ENV POSTGRESQL_DATABASE_PASSWORD=
 
