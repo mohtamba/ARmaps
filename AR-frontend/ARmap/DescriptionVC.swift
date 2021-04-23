@@ -47,6 +47,11 @@ class DescriptionVC: UIViewController, CLLocationManagerDelegate {
         destinationName.sizeToFit()
         destinationDescription.text = dest?.description
         destinationDescription.sizeToFit()
+        destinationDistance.text = "Distance to Destination: " + String(round((Double((dest?.distance)!)) * 10) / 10.0) + " mile(s)"
+        destinationDistance.sizeToFit()
+        destinationTime.text = "Time to Destination: " + String(Int((Double((dest?.distance)!)) * 20)) + " minutes"
+        destinationTime.sizeToFit()
+        
                 
         // Ask for Authorisation from the User.
         locationManager.requestAlwaysAuthorization()
@@ -82,10 +87,10 @@ class DescriptionVC: UIViewController, CLLocationManagerDelegate {
             self.trydirections = directs
             print(self.trydirections)
             DispatchQueue.main.async {
-                self.destinationTime.text = "Time to Destination: " + String(self.trydirections.time!.intValue + 1) + " minutes"
-                self.destinationDistance.text = "Distance to Destination: " + String(self.trydirections.distance!.intValue + 1) + " miles"
-                self.destinationTime.sizeToFit()
-                self.destinationDistance.sizeToFit()
+//                self.destinationTime.text = "Time to Destination: " + String(self.trydirections.time!.intValue + 1) + " minutes"
+//                self.destinationDistance.text = "Distance to Destination: " + String(self.trydirections.distance!.intValue + 1) + " mile(s)"
+//                self.destinationTime.sizeToFit()
+//                self.destinationDistance.sizeToFit()
                 self.directions = self.trydirections.data
             }
         }) {}

@@ -9,6 +9,6 @@
 
 [grade_sheet]: https://docs.google.com/spreadsheets/d/1lDYbenQKYUpSqvvMy0rsRXubkJEPmhJK0bqvqnHGVj8/edit?usp=sharing
 [team_contract]: /assets/armaps_contract.pdf
-[demo_page]: https://youtu.be/RVMJMSMM4p0
+[demo_page]: https://youtu.be/5tgmG_HkqyA
 [wiki_page]: https://github.com/mohtamba/ARmaps/wiki
 [process_page]: https://trello.com/b/hibOg284/general

@@ -16,15 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2021 ARmap. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydg-m5-hSR">
-                                <rect key="frame" x="0.0" y="855" width="414" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ARmaps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="lZ9-iV-K7g">
                                 <rect key="frame" x="0.0" y="431.5" width="414" height="43"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2021 ARmap. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydg-m5-hSR">
+                                <rect key="frame" x="0.0" y="841" width="414" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -35,7 +35,7 @@
                             <constraint firstItem="lZ9-iV-K7g" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="WLm-80-XQI"/>
                             <constraint firstItem="lZ9-iV-K7g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ubQ-aj-qP7"/>
                             <constraint firstItem="lZ9-iV-K7g" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="vA1-KK-GMb"/>
-                            <constraint firstAttribute="bottom" secondItem="Ydg-m5-hSR" secondAttribute="bottom" constant="20" id="vZo-dY-76P"/>
+                            <constraint firstAttribute="bottom" secondItem="Ydg-m5-hSR" secondAttribute="bottom" constant="34" id="vZo-dY-76P"/>
                             <constraint firstItem="Ydg-m5-hSR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xng-Rk-DjB"/>
                             <constraint firstItem="Ydg-m5-hSR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zSU-ze-Ry6"/>
                         </constraints>
